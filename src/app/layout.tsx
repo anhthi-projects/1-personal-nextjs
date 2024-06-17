@@ -1,26 +1,30 @@
+import { UsyProvider } from "@anhthi-projects/usy-ui";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Montserrat } from "next/font/google";
 
-import StyledComponentsRegistry from "@/lib/registry";
+import "@anhthi-projects/usy-ui/dist/styles.css";
+import StyledComponentsRegistry from "@/registries/styled-comps.registry";
 
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const montserrat = Montserrat({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Thi Nguyen | Personal site",
   description: "A personal site for portfolios",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
+type RootLayoutProps = Readonly<{
   children: React.ReactNode;
-}>) {
+}>;
+
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+      <body className={montserrat.className}>
+        <StyledComponentsRegistry>
+          <UsyProvider>{children}</UsyProvider>
+        </StyledComponentsRegistry>
       </body>
     </html>
   );
