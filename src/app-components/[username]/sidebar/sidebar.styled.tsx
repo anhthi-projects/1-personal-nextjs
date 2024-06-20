@@ -5,6 +5,7 @@ import {
   usyFontSizes,
   usySpacing,
 } from "@anhthi-projects/usy-ui";
+import Link from "next/link";
 import styled from "styled-components";
 
 /**
@@ -31,7 +32,7 @@ export const Navigator = styled.div`
   margin-top: 100px;
 `;
 
-export const NavigatorItem = styled.a`
+export const NavigatorItem = styled(Link)`
   text-transform: uppercase;
   font-size: ${usyFontSizes.sm};
   color: ${usyColors.dark3};

@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 import { MAX_WIDTH } from "@/styles/constants";
 
-export const HomeWrapper = styled.div`
+export const PersonalWrapper = styled.div`
   max-width: ${MAX_WIDTH};
   margin: 0 auto;
   display: flex;

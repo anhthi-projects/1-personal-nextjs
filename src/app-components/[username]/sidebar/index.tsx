@@ -1,3 +1,5 @@
+import { FC } from "react";
+
 import {
   Badge,
   BrandFacebookIcon,
@@ -14,14 +16,18 @@ import {
   Navigator,
   NavigatorItem,
   SocialNetworks,
-} from "./styled";
+} from "./sidebar.styled";
 
-export const SideBar = () => {
+interface SideBarProps {
+  username: string;
+}
+
+export const SideBar: FC<SideBarProps> = ({ username }) => {
   const renderInfo = () => {
     return (
       <Info>
         <NameTypography size="large" weight="semibold">
-          ⇒ anhthing
+          ⇒ {username}
         </NameTypography>
         <JobTitleTypography size="small" weight="semibold">
           Senior Developer
@@ -46,11 +52,11 @@ export const SideBar = () => {
   const renderNavigator = () => {
     return (
       <Navigator>
-        <NavigatorItem href="#">Home</NavigatorItem>
-        <NavigatorItem href="#">Articles</NavigatorItem>
-        <NavigatorItem href="#">Portfolios</NavigatorItem>
-        <NavigatorItem href="#">Experience</NavigatorItem>
-        <NavigatorItem href="#">Skills</NavigatorItem>
+        <NavigatorItem href="intro">Intro</NavigatorItem>
+        <NavigatorItem href="articles">Articles</NavigatorItem>
+        <NavigatorItem href="portfolios">Portfolios</NavigatorItem>
+        <NavigatorItem href="experience">Experience</NavigatorItem>
+        <NavigatorItem href="skills">Skills</NavigatorItem>
       </Navigator>
     );
   };

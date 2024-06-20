@@ -1,25 +1,13 @@
-"use client";
-import { useEffect } from "react";
-
-import {
-  Button,
-  Flex,
-  GuyHackerIcon,
-  usyColors,
-} from "@anhthi-projects/usy-ui";
+import { Button, Flex, GuyHackerIcon } from "@anhthi-projects/usy-ui";
 
 import {
   AboutMeTypography,
   BriefIntroTypography,
   HiThereTypography,
   OutdoorActivitiesTypography,
-} from "./styled";
+} from "./page.styled";
 
-export const Introduce = () => {
-  useEffect(() => {
-    console.log(usyColors);
-  }, []);
-
+const Intro = () => {
   const renderIntroAndReference = () => {
     return (
       <>
@@ -53,3 +41,5 @@ export const Introduce = () => {
     </>
   );
 };
+
+export default Intro;

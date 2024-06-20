@@ -1,22 +1,15 @@
-import { Introduce } from "@/screens/[username]/introduce";
-import { SideBar } from "@/screens/[username]/sidebar";
+import { FC } from "react";
 
-import { ContentContainer, HomeWrapper, SideBarContainer } from "./page.styled";
+import { redirect } from "next/navigation";
 
-const Personal = ({ params }: { params: { username: string } }) => {
-  console.log(params.username);
+interface UsernameProps {
+  params: {
+    username: string;
+  };
+}
 
-  return (
-    <HomeWrapper>
-      <p>{params.username}</p>
-      <SideBarContainer>
-        <SideBar />
-      </SideBarContainer>
-      <ContentContainer>
-        <Introduce />
-      </ContentContainer>
-    </HomeWrapper>
-  );
+const Username: FC<UsernameProps> = ({ params }) => {
+  redirect(`${params.username}/intro`);
 };
 
-export default Personal;
+export default Username;
