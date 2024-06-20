@@ -61,7 +61,7 @@ importers:
 packages:
 
   '@anhthi-projects/usy-ui@file:../usy-ui/anhthi-projects-usy-ui-1.0.11.tgz':
-    resolution: {integrity: sha512-l5UTLGAroOJZJaeCT/yEJYU7NW4SxeX6MZdUZo50QKoQ0izGPXMXffIhmqaex20G+Iw5yCKYCfTNxX40GSy5sA==, tarball: file:../usy-ui/anhthi-projects-usy-ui-1.0.11.tgz}
+    resolution: {integrity: sha512-/90vwzToMGBDdkiLry9xWNUV4fxOY0M/iMB3dAKV1gQ6FVq+dfw9ypYN9ic87TQhTpRD38beotYN6haAF5WlOA==, tarball: file:../usy-ui/anhthi-projects-usy-ui-1.0.11.tgz}
     version: 1.0.11
     peerDependencies:
       '@types/react': '*'

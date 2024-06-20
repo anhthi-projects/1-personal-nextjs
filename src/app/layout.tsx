@@ -1,13 +1,13 @@
 import { UsyProvider } from "@anhthi-projects/usy-ui";
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
+import { Poppins } from "next/font/google";
 
 import "@anhthi-projects/usy-ui/dist/styles.css";
 import StyledComponentsRegistry from "@/registries/styled-comps.registry";
 
 import "./globals.css";
 
-const montserrat = Montserrat({ subsets: ["latin"] });
+const montserrat = Poppins({ subsets: ["latin"], weight: "300" });
 
 export const metadata: Metadata = {
   title: "Thi Nguyen | Personal site",

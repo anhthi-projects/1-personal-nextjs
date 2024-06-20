@@ -1,5 +1,4 @@
-const Index = () => {
+const UserName = () => {
   return <div>Dashboard</div>;
 };
-
-export default Index;
+export default UserName;
