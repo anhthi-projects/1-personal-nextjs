@@ -22,9 +22,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
       <body className={montserrat.className}>
-        <StyledComponentsRegistry>
-          <UsyProvider>{children}</UsyProvider>
-        </StyledComponentsRegistry>
+        <UsyProvider>
+          <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+        </UsyProvider>
       </body>
     </html>
   );

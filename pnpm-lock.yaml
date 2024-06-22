@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@anhthi-projects/usy-ui':
-        specifier: file:C:/Users/anhth/OneDrive/Desktop/projects/usy-ui/anhthi-projects-usy-ui-1.0.11.tgz
-        version: file:../usy-ui/anhthi-projects-usy-ui-1.0.11.tgz(@types/react-dom@18.3.0)(@types/react@18.3.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: file:C:/Users/anhth/OneDrive/Desktop/projects/usy-ui/anhthi-projects-usy-ui-1.0.12.tgz
+        version: file:../usy-ui/anhthi-projects-usy-ui-1.0.12.tgz(@types/react-dom@18.3.0)(@types/react@18.3.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       next:
         specifier: 14.1.4
         version: 14.1.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -23,6 +23,9 @@ importers:
       react-error-boundary:
         specifier: ^4.0.13
         version: 4.0.13(react@18.3.1)
+      react-hook-form:
+        specifier: ^7.52.0
+        version: 7.52.0(react@18.3.1)
       styled-components:
         specifier: ^6.1.8
         version: 6.1.11(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -60,9 +63,9 @@ importers:
 
 packages:
 
-  '@anhthi-projects/usy-ui@file:../usy-ui/anhthi-projects-usy-ui-1.0.11.tgz':
-    resolution: {integrity: sha512-/90vwzToMGBDdkiLry9xWNUV4fxOY0M/iMB3dAKV1gQ6FVq+dfw9ypYN9ic87TQhTpRD38beotYN6haAF5WlOA==, tarball: file:../usy-ui/anhthi-projects-usy-ui-1.0.11.tgz}
-    version: 1.0.11
+  '@anhthi-projects/usy-ui@file:../usy-ui/anhthi-projects-usy-ui-1.0.12.tgz':
+    resolution: {integrity: sha512-4uHD/ZuMUtZAIe55yOhlkFMDEvun/1lFz+WynoiC87SfzgKRsv+F3/RjFdQ8Gv+mmlACrXrBo7lk8WKEWUH8wg==, tarball: file:../usy-ui/anhthi-projects-usy-ui-1.0.12.tgz}
+    version: 1.0.12
     peerDependencies:
       '@types/react': '*'
       '@types/react-dom': '*'
@@ -1245,6 +1248,12 @@ packages:
     peerDependencies:
       react: '>=16.13.1'
 
+  react-hook-form@7.52.0:
+    resolution: {integrity: sha512-mJX506Xc6mirzLsmXUJyqlAI3Kj9Ph2RhplYhUVffeOQSnubK2uVqBFOBJmvKikvbFV91pxVXmDiR+QMF19x6A==}
+    engines: {node: '>=12.22.0'}
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18 || ^19
+
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
 
@@ -1564,7 +1573,7 @@ packages:
 
 snapshots:
 
-  '@anhthi-projects/usy-ui@file:../usy-ui/anhthi-projects-usy-ui-1.0.11.tgz(@types/react-dom@18.3.0)(@types/react@18.3.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@anhthi-projects/usy-ui@file:../usy-ui/anhthi-projects-usy-ui-1.0.12.tgz(@types/react-dom@18.3.0)(@types/react@18.3.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@types/react': 18.3.2
       '@types/react-dom': 18.3.0
@@ -2924,6 +2933,10 @@ snapshots:
   react-error-boundary@4.0.13(react@18.3.1):
     dependencies:
       '@babel/runtime': 7.24.5
+      react: 18.3.1
+
+  react-hook-form@7.52.0(react@18.3.1):
+    dependencies:
       react: 18.3.1
 
   react-is@16.13.1: {}

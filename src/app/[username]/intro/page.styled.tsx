@@ -21,5 +21,5 @@ export const AboutMeTypography = styled(Typography)`
 
 export const OutdoorActivitiesTypography = styled(Typography)`
   color: ${usyColors.dark1};
-  margin: 50px 0 0;
+  margin: 50px 0 30px;
 `;
