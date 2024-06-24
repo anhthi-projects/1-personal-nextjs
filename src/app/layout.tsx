@@ -1,4 +1,4 @@
-import { UsyProvider } from "@anhthi-projects/usy-ui";
+import { Toast, UsyProvider } from "@anhthi-projects/usy-ui";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 
@@ -6,6 +6,7 @@ import "@anhthi-projects/usy-ui/dist/styles.css";
 import StyledComponentsRegistry from "@/registries/styled-comps.registry";
 
 import "./globals.css";
+import StoryProvider from "./store-provider";
 
 const montserrat = Poppins({ subsets: ["latin"], weight: "300" });
 
@@ -22,9 +23,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
       <body className={montserrat.className}>
-        <UsyProvider>
-          <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
-        </UsyProvider>
+        <StoryProvider>
+          <UsyProvider>
+            <Toast />
+            <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+          </UsyProvider>
+        </StoryProvider>
       </body>
     </html>
   );

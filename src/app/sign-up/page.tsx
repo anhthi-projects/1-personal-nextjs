@@ -1,5 +1,11 @@
 "use client";
-import { Button, Input, Password, Typography } from "@anhthi-projects/usy-ui";
+import {
+  Button,
+  Input,
+  Password,
+  Typography,
+  toastIns,
+} from "@anhthi-projects/usy-ui";
 import { Controller, useForm } from "react-hook-form";
 
 import { ValidateRules } from "@/constants/validate";
@@ -29,6 +35,10 @@ const SignUp = () => {
   });
 
   const onSubmit = (data: SignUpForm) => {
+    toastIns.success({
+      title: "Success",
+      content: "Your registration was done",
+    });
     console.log(data);
   };
 
@@ -116,9 +126,8 @@ const SignUp = () => {
         <Button type="submit" variant="primary">
           Register
         </Button>
-        <Typography align="center">
+        <Typography size="small" align="center">
           {`Already has an account?`}
-          {`  `}
           <SignInLink href="/">Sign In</SignInLink>
         </Typography>
       </SignUpFormContainer>

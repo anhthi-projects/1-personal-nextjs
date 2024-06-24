@@ -31,4 +31,5 @@ export const SignUpFormContainer = styled.form`
 
 export const SignInLink = styled(Link)`
   color: ${usyColors.primaryDark};
+  margin-left: ${usySpacing.px4};
 `;

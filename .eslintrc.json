@@ -2,7 +2,7 @@
   "extends": ["next/core-web-vitals", "plugin:import/recommended"],
   "rules": {
     "import/no-named-as-default": "off",
-    "no-unused-vars": "error",
+    "import/named": "off",
     "import/order": [
       "error",
       {
