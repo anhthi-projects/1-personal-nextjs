@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 
 import "@anhthi-projects/usy-ui/dist/styles.css";
-import StyledComponentsRegistry from "@/registries/styled-comps.registry";
+import StyledComponentsRegistry from "@/registries/styled-components.registry";
 
 import "./globals.css";
 import StoryProvider from "./store-provider";

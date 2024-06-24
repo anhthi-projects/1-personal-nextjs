@@ -8,7 +8,7 @@ interface UsernameProps {
   };
 }
 
-const Username: FC<UsernameProps> = ({ params }) => {
+const Username: FC<UsernameProps> = async ({ params }) => {
   redirect(`${params.username}/intro`);
 };
 

@@ -1,14 +1,11 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { createApi } from "@reduxjs/toolkit/query/react";
 
-import { UserModel } from "@/models/user.model";
+import { createBaseQuery } from "../base-fetching";
 
 export const usersApi = createApi({
   reducerPath: "users",
-  baseQuery: fetchBaseQuery({ baseUrl: process.env.SERVICE_URL }),
+  baseQuery: createBaseQuery(),
   endpoints: (builder) => ({
-    getUserById: builder.query<UserModel, string>({
-      query: (id: string) => `/users/${id}`,
-    }),
     createUser: builder.mutation({
       query: ({ payload }) => ({
         url: "/users",
@@ -26,8 +23,4 @@ export const usersApi = createApi({
   }),
 });
 
-export const {
-  useGetUserByIdQuery,
-  useCreateUserMutation,
-  useUpdateUserMutation,
-} = usersApi;
+export const { useCreateUserMutation, useUpdateUserMutation } = usersApi;

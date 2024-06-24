@@ -5,6 +5,8 @@ import {
   ImageGallery,
 } from "@anhthi-projects/usy-ui";
 
+import { getUserByUsername } from "@/data-fetching/users/users.fetch";
+
 import {
   AboutMeTypography,
   BriefIntroTypography,
@@ -12,7 +14,12 @@ import {
   OutdoorActivitiesTypography,
 } from "./page.styled";
 
-const Intro = () => {
+const Intro = async ({ params }: any) => {
+  const { data, error } = await getUserByUsername(params.username);
+
+  console.log("Intro", data);
+  console.log("Intro", error);
+
   const renderIntroAndReference = () => {
     return (
       <>
