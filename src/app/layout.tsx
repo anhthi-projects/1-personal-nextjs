@@ -1,9 +1,8 @@
-import { Toast, UsyProvider } from "@anhthi-projects/usy-ui";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 
 import "@anhthi-projects/usy-ui/dist/styles.css";
-import StyledComponentsRegistry from "@/registries/styled-components.registry";
+import { StyledComponentsRegistry } from "@/lib/registry";
 
 import "./globals.css";
 import StoryProvider from "./store-provider";
@@ -24,10 +23,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <html lang="en">
       <body className={montserrat.className}>
         <StoryProvider>
-          <UsyProvider>
-            <Toast />
-            <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
-          </UsyProvider>
+          <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
         </StoryProvider>
       </body>
     </html>
