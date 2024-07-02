@@ -1,10 +1,4 @@
-import {
-  Button,
-  Input,
-  Password,
-  Toast,
-  Typography,
-} from "@anhthi-projects/usy-ui";
+import { Button, Input, Password, Typography } from "@anhthi-projects/usy-ui";
 
 import {
   HomeContainer,
@@ -28,7 +22,6 @@ const Home = () => {
           {`Don't have an account?`}
           {`  `}
           <SignUpLink href="sign-up">Sign Up</SignUpLink>
-          <Toast />
         </Typography>
       </>
     );

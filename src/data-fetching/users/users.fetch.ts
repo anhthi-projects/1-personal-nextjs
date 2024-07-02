@@ -1,7 +1,7 @@
 import { UserModel } from "@/models/user.model";
 
-import { createBaseFetch } from "../base-fetching";
+import { createPureFetchBase } from "../base";
 
 export const getUserByUsername = (username: string) => {
-  return createBaseFetch<UserModel>(`/users/${username}`);
+  return createPureFetchBase<UserModel>(`/users/${username}`);
 };

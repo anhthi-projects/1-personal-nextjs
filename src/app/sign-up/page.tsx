@@ -1,14 +1,19 @@
 "use client";
+import { useEffect } from "react";
+
 import {
   Button,
   Input,
   Password,
+  Toast,
   Typography,
   toastIns,
 } from "@anhthi-projects/usy-ui";
+import { omit } from "lodash";
 import { Controller, useForm } from "react-hook-form";
 
 import { ValidateRules } from "@/constants/validate";
+import { useCreateUserMutation } from "@/data-fetching/users/users.api";
 import { UserModel } from "@/models/user.model";
 
 import {
@@ -25,6 +30,35 @@ type SignUpForm = Pick<
 };
 
 const SignUp = () => {
+  const [createUser, result] = useCreateUserMutation();
+
+  console.log("result", result);
+
+  useEffect(() => {
+    if (!result) {
+      return;
+    }
+
+    const { isSuccess, isError, error } = result;
+
+    if (isSuccess) {
+      toastIns.success({
+        title: "Success",
+        content: "Your registration has been done",
+      });
+    }
+
+    const errorMessage = error?.data?.message;
+    if (isError && typeof errorMessage === "object") {
+      if (errorMessage.details.P2002) {
+        toastIns.error({
+          title: "Error",
+          content: `The ${errorMessage.fields[0]} is already existed`,
+        });
+      }
+    }
+  }, [result]);
+
   const {
     handleSubmit,
     getValues,
@@ -35,11 +69,7 @@ const SignUp = () => {
   });
 
   const onSubmit = (data: SignUpForm) => {
-    toastIns.success({
-      title: "Success",
-      content: "Your registration was done",
-    });
-    console.log(data);
+    createUser(omit(data, "confirmPassword"));
   };
 
   return (
@@ -123,6 +153,7 @@ const SignUp = () => {
             />
           )}
         />
+
         <Button type="submit" variant="primary">
           Register
         </Button>

@@ -1,3 +1,4 @@
+import { Toast } from "@anhthi-projects/usy-ui";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 
@@ -23,7 +24,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <html lang="en">
       <body className={montserrat.className}>
         <StoryProvider>
-          <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+          <StyledComponentsRegistry>
+            <Toast />
+            {children}
+          </StyledComponentsRegistry>
         </StoryProvider>
       </body>
     </html>
