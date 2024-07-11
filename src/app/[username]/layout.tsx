@@ -1,6 +1,6 @@
 import { FC, ReactNode, Suspense } from "react";
 
-import { SideBar } from "@/app-components/[username]/sidebar";
+import { SideBar } from "@/app-pages/[username]/sidebar";
 
 import {
   ContentContainer,

@@ -2,7 +2,7 @@ import { createApi } from "@reduxjs/toolkit/query/react";
 
 import { UserModel } from "@/models/user.model";
 
-import { createRtkFetchBase } from "../base";
+import { createRtkFetchBase } from "../fetch-base";
 
 import { CreateUserDto } from "./users.types";
 
@@ -10,7 +10,7 @@ export const usersApi = createApi({
   reducerPath: "users",
   baseQuery: createRtkFetchBase(),
   endpoints: (builder) => ({
-    createUser: builder.mutation<UserModel, CreateUserDto>({
+    signUp: builder.mutation<UserModel, CreateUserDto>({
       query: (payload) => ({
         url: "/auth/sign-up",
         method: "POST",
@@ -30,4 +30,4 @@ export const usersApi = createApi({
   }),
 });
 
-export const { useCreateUserMutation, useUpdateUserMutation } = usersApi;
+export const { useSignUpMutation, useUpdateUserMutation } = usersApi;

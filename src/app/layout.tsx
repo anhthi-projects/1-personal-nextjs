@@ -3,10 +3,10 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 
 import "@anhthi-projects/usy-ui/dist/styles.css";
-import { StyledComponentsRegistry } from "@/lib/registry";
 
 import "./globals.css";
-import StoryProvider from "./store-provider";
+import { StyledComponentsRegistry } from "@/app-core/registry";
+import { StoreProvider } from "@/app-core/store-provider";
 
 const montserrat = Poppins({ subsets: ["latin"], weight: "300" });
 
@@ -23,12 +23,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
       <body className={montserrat.className}>
-        <StoryProvider>
+        <StoreProvider>
           <StyledComponentsRegistry>
             <Toast />
             {children}
           </StyledComponentsRegistry>
-        </StoryProvider>
+        </StoreProvider>
       </body>
     </html>
   );

@@ -5,7 +5,7 @@ import {
   ImageGallery,
 } from "@anhthi-projects/usy-ui";
 
-import { getUserByUsername } from "@/data-fetching/users/users.fetch";
+import { getUserByUsername } from "@/client-apis/users/users.fetch";
 
 import {
   AboutMeTypography,

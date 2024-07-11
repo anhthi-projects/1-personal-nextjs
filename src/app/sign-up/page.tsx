@@ -5,23 +5,23 @@ import {
   Button,
   Input,
   Password,
-  Toast,
   Typography,
   toastIns,
 } from "@anhthi-projects/usy-ui";
 import { omit } from "lodash";
 import { Controller, useForm } from "react-hook-form";
 
+import { useSignUpMutation } from "@/client-apis/users/users.api";
 import { ValidateRules } from "@/constants/validate";
-import { useCreateUserMutation } from "@/data-fetching/users/users.api";
 import { UserModel } from "@/models/user.model";
+import { AppException } from "@/types/exception";
+import { PrismaErrorCode } from "@/types/prisma";
 
 import {
   SignInLink,
   SignUpContainer,
   SignUpFormContainer,
 } from "./sign-up.styled";
-
 type SignUpForm = Pick<
   UserModel,
   "username" | "password" | "name" | "email"
@@ -30,34 +30,35 @@ type SignUpForm = Pick<
 };
 
 const SignUp = () => {
-  const [createUser, result] = useCreateUserMutation();
-
-  console.log("result", result);
+  const [createUser, { isSuccess, error }] = useSignUpMutation();
 
   useEffect(() => {
-    if (!result) {
-      return;
-    }
-
-    const { isSuccess, isError, error } = result;
-
     if (isSuccess) {
       toastIns.success({
         title: "Success",
         content: "Your registration has been done",
       });
     }
+  }, [isSuccess]);
 
-    const errorMessage = error?.data?.message;
-    if (isError && typeof errorMessage === "object") {
-      if (errorMessage.details.P2002) {
-        toastIns.error({
-          title: "Error",
-          content: `The ${errorMessage.fields[0]} is already existed`,
-        });
+  useEffect(() => {
+    if (!error) {
+      return;
+    }
+
+    if ("data" in error) {
+      const errorMessage = (error.data as AppException)?.message[0];
+
+      switch (errorMessage.details.code) {
+        case PrismaErrorCode.DUPLICATED: {
+          toastIns.error({
+            title: "Error",
+            content: `The ${errorMessage.fieldName} is already existed`,
+          });
+        }
       }
     }
-  }, [result]);
+  }, [error]);
 
   const {
     handleSubmit,
@@ -127,7 +128,7 @@ const SignUp = () => {
         <Controller
           name="name"
           control={control}
-          rules={{ required: ValidateRules.isRequired }}
+          // rules={{ required: ValidateRules.isRequired }}
           render={({ field }) => (
             <Input
               {...field}
@@ -141,7 +142,7 @@ const SignUp = () => {
           name="email"
           control={control}
           rules={{
-            required: ValidateRules.isRequired,
+            // required: ValidateRules.isRequired,
             pattern: ValidateRules.isEmailPattern,
           }}
           render={({ field }) => (
