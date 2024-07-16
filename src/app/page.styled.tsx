@@ -35,7 +35,7 @@ export const SidePanel = styled.div`
   border-bottom-left-radius: 60px;
 `;
 
-export const SignInFormContainer = styled.div`
+export const SignInFormContainer = styled.form`
   display: flex;
   flex-direction: column;
   gap: ${usySpacing.px28};

@@ -1,6 +1,3 @@
 import { UserModel } from "@/models/user.model";
 
-export type CreateUserDto = Pick<
-  UserModel,
-  "username" | "password" | "name" | "email"
->;
+export type UpdateUserRequest = { id: string; payload: Partial<UserModel> };

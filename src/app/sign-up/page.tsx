@@ -9,9 +9,11 @@ import {
   toastIns,
 } from "@anhthi-projects/usy-ui";
 import { omit } from "lodash";
+import { redirect } from "next/navigation";
 import { Controller, useForm } from "react-hook-form";
 
-import { useSignUpMutation } from "@/client-apis/users/users.api";
+import { useSignUpMutation } from "@/client-apis/auth/auth.api";
+import { AppRoute } from "@/constants/routes";
 import { ValidateRules } from "@/constants/validate";
 import { UserModel } from "@/models/user.model";
 import { AppException } from "@/types/exception";
@@ -30,6 +32,14 @@ type SignUpForm = Pick<
 };
 
 const SignUp = () => {
+  const {
+    handleSubmit,
+    getValues,
+    control,
+    formState: { errors },
+  } = useForm<SignUpForm>({
+    reValidateMode: "onBlur",
+  });
   const [createUser, { isSuccess, error }] = useSignUpMutation();
 
   useEffect(() => {
@@ -38,6 +48,7 @@ const SignUp = () => {
         title: "Success",
         content: "Your registration has been done",
       });
+      redirect(AppRoute.HOME);
     }
   }, [isSuccess]);
 
@@ -47,6 +58,7 @@ const SignUp = () => {
     }
 
     if ("data" in error) {
+      console.log(error);
       const errorMessage = (error.data as AppException)?.message[0];
 
       switch (errorMessage.details.code) {
@@ -59,15 +71,6 @@ const SignUp = () => {
       }
     }
   }, [error]);
-
-  const {
-    handleSubmit,
-    getValues,
-    control,
-    formState: { errors },
-  } = useForm<SignUpForm>({
-    reValidateMode: "onSubmit",
-  });
 
   const onSubmit = (data: SignUpForm) => {
     createUser(omit(data, "confirmPassword"));
@@ -128,7 +131,7 @@ const SignUp = () => {
         <Controller
           name="name"
           control={control}
-          // rules={{ required: ValidateRules.isRequired }}
+          rules={{ required: ValidateRules.isRequired }}
           render={({ field }) => (
             <Input
               {...field}
@@ -142,7 +145,7 @@ const SignUp = () => {
           name="email"
           control={control}
           rules={{
-            // required: ValidateRules.isRequired,
+            required: ValidateRules.isRequired,
             pattern: ValidateRules.isEmailPattern,
           }}
           render={({ field }) => (
