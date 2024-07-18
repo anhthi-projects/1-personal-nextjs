@@ -1,10 +1,18 @@
 "use client";
 import { useEffect } from "react";
 
-import { Button, Input, Password, Typography } from "@anhthi-projects/usy-ui";
+import {
+  buildPath,
+  Button,
+  Input,
+  Password,
+  Typography,
+} from "@anhthi-projects/usy-ui";
+import { redirect } from "next/navigation";
 import { Controller, useForm } from "react-hook-form";
 
 import { useSignInMutation } from "@/client-apis/auth/auth.api";
+import { AppRoute, DashboardSubRoute } from "@/constants/routes";
 import { ValidateRules } from "@/constants/validate";
 
 import {
@@ -35,6 +43,11 @@ const Home = () => {
     if (isSuccess) {
       sessionStorage.setItem("__access_token__", data.access_token);
       sessionStorage.setItem("__refresh_token__", data.refresh_token);
+      redirect(
+        buildPath(AppRoute.DASHBOARD, {
+          section: DashboardSubRoute.PROFILE,
+        })
+      );
     }
   }, [isSuccess, data]);
 

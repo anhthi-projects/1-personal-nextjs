@@ -11,6 +11,7 @@ export interface UserModel {
   position: string;
   yearOfExp: string;
   aboutMe: string;
+  avatarUrl: string;
   cvUrl: string;
   tags: string[];
   projects: ProjectModel[];

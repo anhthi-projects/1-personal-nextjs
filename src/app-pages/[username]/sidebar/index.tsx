@@ -32,7 +32,7 @@ export const SideBar: FC<SideBarProps> = ({ username }) => {
         <JobTitleTypography size="small" weight="semibold">
           Senior Developer
         </JobTitleTypography>
-        <Flex gap="2px">
+        <Flex gap="2px" wrap="wrap">
           <Badge size="small">ReactJS</Badge>
           <Badge size="small" color="primary-light">
             NodeJS
