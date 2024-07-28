@@ -20,6 +20,7 @@ import {
   Illustration,
   SidePanel,
   SignInFormContainer,
+  SignInTypography,
   SignUpLink,
 } from "./page.styled";
 
@@ -57,10 +58,8 @@ const Home = () => {
 
   const renderSignInForm = () => {
     return (
-      <>
-        <Typography size="large" weight="bold">
-          Sign In
-        </Typography>
+      <SignInFormContainer onSubmit={handleSubmit(onSubmit)}>
+        <SignInTypography>Sign In</SignInTypography>
         <Controller
           name="username"
           control={control}
@@ -90,23 +89,19 @@ const Home = () => {
         <Button type="submit" variant="primary">
           Sign In
         </Button>
-        <Typography align="center">
+        <Typography size="small" align="center">
           {`Don't have an account?`}
           {`  `}
           <SignUpLink href="sign-up">Sign Up</SignUpLink>
         </Typography>
-      </>
+      </SignInFormContainer>
     );
   };
 
   return (
     <HomeContainer>
       <Illustration />
-      <SidePanel>
-        <SignInFormContainer onSubmit={handleSubmit(onSubmit)}>
-          {renderSignInForm()}
-        </SignInFormContainer>
-      </SidePanel>
+      <SidePanel>{renderSignInForm()}</SidePanel>
     </HomeContainer>
   );
 };

@@ -1,4 +1,4 @@
-import { usyColors, usySpacing } from "@anhthi-projects/usy-ui";
+import { usyColors, usyFontSizes, usySpacing } from "@anhthi-projects/usy-ui";
 import styled from "styled-components";
 
 export const BrandTypography = styled.h3`
@@ -24,6 +24,7 @@ export const MenuItem = styled.button<{ $isActive?: boolean }>`
   border: none;
   outline: none;
   font-weight: ${({ $isActive }) => ($isActive ? "bold" : "normal")};
+  font-size: ${usyFontSizes.md};
   position: relative;
   cursor: pointer;
 

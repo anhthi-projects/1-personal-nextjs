@@ -20,21 +20,18 @@ import { AppException } from "@/types/exception";
 import { PrismaErrorCode } from "@/types/prisma";
 
 import {
+  Illustration,
+  SidePanel,
   SignInLink,
   SignUpContainer,
   SignUpFormContainer,
+  SignUpTypography,
 } from "./sign-up.styled";
-type SignUpForm = Pick<
-  UserModel,
-  "username" | "password" | "name" | "email"
-> & {
-  confirmPassword: string;
-};
+type SignUpForm = Pick<UserModel, "username" | "password" | "name" | "email">;
 
 const SignUp = () => {
   const {
     handleSubmit,
-    getValues,
     control,
     formState: { errors },
   } = useForm<SignUpForm>({
@@ -58,7 +55,6 @@ const SignUp = () => {
     }
 
     if ("data" in error) {
-      console.log(error);
       const errorMessage = (error.data as AppException)?.message[0];
 
       switch (errorMessage.details.code) {
@@ -76,12 +72,14 @@ const SignUp = () => {
     createUser(omit(data, "confirmPassword"));
   };
 
-  return (
-    <SignUpContainer onSubmit={handleSubmit(onSubmit)}>
-      <SignUpFormContainer>
-        <Typography size="large" weight="bold">
-          Sign Up
-        </Typography>
+  /**
+   * Render
+   */
+
+  const renderForm = () => {
+    return (
+      <SignUpFormContainer onSubmit={handleSubmit(onSubmit)}>
+        <SignUpTypography>Sign Up</SignUpTypography>
         <Controller
           name="username"
           control={control}
@@ -105,26 +103,6 @@ const SignUp = () => {
               title="Password"
               hasError={Boolean(errors["password"]?.message)}
               description={errors["password"]?.message}
-            />
-          )}
-        />
-        <Controller
-          name="confirmPassword"
-          control={control}
-          rules={{
-            required: ValidateRules.isRequired,
-            validate: (value: string) => {
-              if (value !== getValues("password")) {
-                return "Your password doesn't match";
-              }
-            },
-          }}
-          render={({ field }) => (
-            <Password
-              {...field}
-              title="Confirm Password"
-              hasError={Boolean(errors["confirmPassword"]?.message)}
-              description={errors["confirmPassword"]?.message}
             />
           )}
         />
@@ -166,6 +144,13 @@ const SignUp = () => {
           <SignInLink href="/">Sign In</SignInLink>
         </Typography>
       </SignUpFormContainer>
+    );
+  };
+
+  return (
+    <SignUpContainer>
+      <Illustration />
+      <SidePanel>{renderForm()}</SidePanel>
     </SignUpContainer>
   );
 };

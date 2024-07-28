@@ -14,7 +14,8 @@ export const LayoutContainer = styled.div`
  */
 
 export const MenuContainer = styled.div`
-  width: 300px;
+  min-width: 300px;
+  max-width: 300px;
   min-height: calc(100vh - 24px);
 `;
 

@@ -8,7 +8,7 @@ export interface UserModel {
   name: string;
   email: string;
   phone: string;
-  position: string;
+  jobPosition: string;
   yearOfExp: string;
   aboutMe: string;
   avatarUrl: string;
@@ -16,5 +16,4 @@ export interface UserModel {
   tags: string[];
   projects: ProjectModel[];
   socialNetworks: SocialNetwork[];
-  refreshToken: string;
 }

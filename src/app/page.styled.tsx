@@ -9,13 +9,7 @@ export const HomeContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgb(9, 71, 59);
-  background: linear-gradient(
-    312deg,
-    rgba(9, 71, 59, 1) 0%,
-    rgba(14, 131, 108, 1) 54%,
-    rgba(28, 205, 170, 1) 100%
-  );
+  background: ${usyColors.primaryDark};
 `;
 
 export const Illustration = styled.div`
@@ -28,17 +22,20 @@ export const SidePanel = styled.div`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  padding: 120px ${usySpacing.px32} ${usySpacing.px32};
+  padding: 100px ${usySpacing.px40} ${usySpacing.px40};
   box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
   background-color: ${usyColors.white};
-  border-top-left-radius: 60px;
-  border-bottom-left-radius: 60px;
 `;
 
 export const SignInFormContainer = styled.form`
   display: flex;
   flex-direction: column;
   gap: ${usySpacing.px28};
+`;
+
+export const SignInTypography = styled.h1`
+  margin: 0 0 ${usySpacing.px48};
+  font-weight: 500;
 `;
 
 export const SignUpLink = styled(Link)`
