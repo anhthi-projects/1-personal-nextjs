@@ -1,10 +1,14 @@
 "use client";
 import { FC, ReactNode } from "react";
 
-import { SideBar } from "@/app-pages/dashboard/sidebar";
-import { TopBar } from "@/app-pages/dashboard/topbar";
+import { LeftBar } from "@/app-pages/dashboard/_layouts/left-bar";
 
-import { LayoutContainer, MainContainer, MenuContainer } from "./layout.styled";
+import {
+  LayoutContainer,
+  MainContainer,
+  LeftBarContainer,
+  RightBarContainer,
+} from "./layout.styled";
 
 interface DashboardLayoutProps {
   children: ReactNode;
@@ -16,13 +20,13 @@ interface DashboardLayoutProps {
 const DashboardLayout: FC<DashboardLayoutProps> = ({ children }) => {
   return (
     <LayoutContainer>
-      <MenuContainer>
-        <SideBar />
-      </MenuContainer>
-      <MainContainer>
-        <TopBar />
-        {children}
-      </MainContainer>
+      <LeftBarContainer>
+        <LeftBar />
+      </LeftBarContainer>
+      <MainContainer>{children}</MainContainer>
+      <RightBarContainer>
+        <RightBarContainer />
+      </RightBarContainer>
     </LayoutContainer>
   );
 };

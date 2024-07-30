@@ -1,15 +1,15 @@
 import { usyColors, usyFontSizes, usySpacing } from "@anhthi-projects/usy-ui";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const BrandTypography = styled.h3`
   margin: 40px auto auto -${usySpacing.px16};
   text-align: center;
+  opacity: 0.8;
 `;
 
 export const MenuList = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 240px;
   margin-top: 80px;
 `;
 
@@ -23,16 +23,22 @@ export const MenuItem = styled.button<{ $isActive?: boolean }>`
   padding-left: ${usySpacing.px32};
   border: none;
   outline: none;
-  font-weight: ${({ $isActive }) => ($isActive ? "bold" : "normal")};
   font-size: ${usyFontSizes.md};
   position: relative;
   cursor: pointer;
+
+  ${({ $isActive }) =>
+    $isActive &&
+    css`
+      font-weight: bold;
+      border-right: 5px solid ${usyColors.primaryLight};
+    `};
 
   &:hover {
     font-weight: bold;
   }
 
   svg {
-    margin-right: ${usySpacing.px20};
+    margin-right: ${usySpacing.px32};
   }
 `;
