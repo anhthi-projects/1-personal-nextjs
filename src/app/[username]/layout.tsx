@@ -1,7 +1,6 @@
 import { FC, ReactNode, Suspense } from "react";
 
-import { SideBar } from "@/app-pages/[username]/_layouts/sidebar";
-
+import { SideBar } from "./_layouts/sidebar";
 import {
   ContentContainer,
   PersonalWrapper,

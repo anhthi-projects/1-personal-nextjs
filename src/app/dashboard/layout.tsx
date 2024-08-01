@@ -1,8 +1,7 @@
 "use client";
 import { FC, ReactNode } from "react";
 
-import { LeftBar } from "@/app-pages/dashboard/_layouts/left-bar";
-
+import { LeftBar } from "./_layouts/left-bar";
 import {
   LayoutContainer,
   MainContainer,
@@ -24,9 +23,7 @@ const DashboardLayout: FC<DashboardLayoutProps> = ({ children }) => {
         <LeftBar />
       </LeftBarContainer>
       <MainContainer>{children}</MainContainer>
-      <RightBarContainer>
-        <RightBarContainer />
-      </RightBarContainer>
+      <RightBarContainer>Right bar</RightBarContainer>
     </LayoutContainer>
   );
 };

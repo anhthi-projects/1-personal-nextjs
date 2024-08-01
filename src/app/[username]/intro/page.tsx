@@ -3,6 +3,8 @@ import {
   Flex,
   GuyHackerIcon,
   ImageGallery,
+  usyColors,
+  usySpacing,
 } from "@anhthi-projects/usy-ui";
 
 import { getUserByUsername } from "@/client-apis/users/users.fetch";
@@ -34,7 +36,11 @@ const Intro = async ({ params }: any) => {
         developers, we're also owners of products who understand and bring
         solutions to solve customer's problems`}
         </AboutMeTypography>
-        <Flex display="inline-flex" gap="12px" margin="10px 0 0 0">
+        <Flex
+          display="inline-flex"
+          gap="12px"
+          marginProps={{ marginTop: usySpacing.px10 }}
+        >
           <Button variant="primary">Download CV</Button>
           <Button variant="outline">View Github</Button>
         </Flex>

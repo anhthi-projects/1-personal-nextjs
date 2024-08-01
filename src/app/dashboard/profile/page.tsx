@@ -1,9 +1,9 @@
 import { Flex, Panel } from "@anhthi-projects/usy-ui";
 
-import { ChangeUsername } from "@/app-pages/dashboard/profile/change-username";
-import { UploadAvatar } from "@/app-pages/dashboard/profile/upload-avatar";
-import { UploadCV } from "@/app-pages/dashboard/profile/upload-cv";
-import { UserInfo } from "@/app-pages/dashboard/profile/user-info";
+import { ChangeUsername } from "./change-username";
+import { UploadAvatar } from "./upload-avatar";
+import { UploadCV } from "./upload-cv";
+import { UserInfo } from "./user-info";
 
 const Profile = () => {
   return (
