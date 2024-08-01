@@ -1,13 +1,13 @@
 export const ValidateRules = {
-  isRequired: {
+  required: {
     value: true,
     message: "This field is required",
   },
-  isEmailPattern: {
+  emailPattern: {
     value: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
     message: "Invalid email address",
   },
-  isPhonePattern: {
+  phonePattern: {
     value: /(84|0[3|5|7|8|9])+([0-9]{8})\b/g,
     message: "Invalid phone number",
   },

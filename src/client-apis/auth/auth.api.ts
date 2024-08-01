@@ -17,9 +17,9 @@ export const authApi = createApi({
         body: payload,
       }),
     }),
-    signIn: builder.mutation<SignInResponse, SignInRequest>({
+    login: builder.mutation<SignInResponse, SignInRequest>({
       query: (payload) => ({
-        url: "/auth/sign-in",
+        url: "/auth/login",
         method: "POST",
         body: payload,
       }),
@@ -27,4 +27,4 @@ export const authApi = createApi({
   }),
 });
 
-export const { useSignUpMutation, useSignInMutation } = authApi;
+export const { useSignUpMutation, useLoginMutation } = authApi;

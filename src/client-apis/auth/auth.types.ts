@@ -1,12 +1,9 @@
 import { UserModel } from "@/models/user.model";
 
-export type CreateUserRequest = Pick<
-  UserModel,
-  "username" | "password" | "name" | "email"
->;
+export type CreateUserRequest = Pick<UserModel, "password" | "name" | "email">;
 
 export type SignInRequest = {
-  username: string;
+  email: string;
   password: string;
 };
 

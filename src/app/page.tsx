@@ -11,7 +11,7 @@ import {
 import { redirect } from "next/navigation";
 import { Controller, useForm } from "react-hook-form";
 
-import { useSignInMutation } from "@/client-apis/auth/auth.api";
+import { useLoginMutation } from "@/client-apis/auth/auth.api";
 import { AppRoute, DashboardSubRoute } from "@/constants/routes";
 import { ValidateRules } from "@/constants/validate";
 
@@ -25,7 +25,7 @@ import {
 } from "./page.styled";
 
 type SignInForm = {
-  username: string;
+  email: string;
   password: string;
 };
 
@@ -38,7 +38,7 @@ const Home = () => {
     reValidateMode: "onBlur",
   });
 
-  const [signIn, { isSuccess, data }] = useSignInMutation();
+  const [signIn, { isSuccess, data }] = useLoginMutation();
 
   useEffect(() => {
     if (isSuccess) {
@@ -61,22 +61,25 @@ const Home = () => {
       <SignInFormContainer onSubmit={handleSubmit(onSubmit)}>
         <SignInTypography>Sign In</SignInTypography>
         <Controller
-          name="username"
+          name="email"
           control={control}
-          rules={{ required: ValidateRules.isRequired }}
+          rules={{
+            required: ValidateRules.required,
+            pattern: ValidateRules.emailPattern,
+          }}
           render={({ field }) => (
             <Input
               {...field}
-              title="Username"
-              hasError={Boolean(errors["username"]?.message)}
-              description={errors["username"]?.message}
+              title="Email"
+              hasError={Boolean(errors["email"]?.message)}
+              description={errors["email"]?.message}
             />
           )}
         />
         <Controller
           name="password"
           control={control}
-          rules={{ required: ValidateRules.isRequired }}
+          rules={{ required: ValidateRules.required }}
           render={({ field }) => (
             <Password
               {...field}

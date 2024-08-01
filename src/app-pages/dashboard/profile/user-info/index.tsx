@@ -56,7 +56,7 @@ export const UserInfo = () => {
         <Controller
           name="name"
           control={control}
-          rules={{ required: ValidateRules.isRequired }}
+          rules={{ required: ValidateRules.required }}
           render={({ field }) => (
             <Input
               {...field}
@@ -70,8 +70,8 @@ export const UserInfo = () => {
           name="email"
           control={control}
           rules={{
-            required: ValidateRules.isRequired,
-            pattern: ValidateRules.isEmailPattern,
+            required: ValidateRules.required,
+            pattern: ValidateRules.emailPattern,
           }}
           render={({ field }) => (
             <Input
@@ -86,8 +86,8 @@ export const UserInfo = () => {
           name="phone"
           control={control}
           rules={{
-            required: ValidateRules.isRequired,
-            pattern: ValidateRules.isPhonePattern,
+            required: ValidateRules.required,
+            pattern: ValidateRules.phonePattern,
           }}
           render={({ field }) => (
             <Input
@@ -108,7 +108,7 @@ export const UserInfo = () => {
         <Controller
           name="jobPosition"
           control={control}
-          rules={{ required: ValidateRules.isRequired }}
+          rules={{ required: ValidateRules.required }}
           render={({ field }) => (
             <Input
               {...field}
@@ -121,7 +121,7 @@ export const UserInfo = () => {
         <Controller
           name="yearOfExp"
           control={control}
-          rules={{ required: ValidateRules.isRequired }}
+          rules={{ required: ValidateRules.required }}
           render={({ field }) => (
             <Input
               {...field}
@@ -150,7 +150,7 @@ export const UserInfo = () => {
         <Controller
           name="aboutMe"
           control={control}
-          rules={{ required: ValidateRules.isRequired }}
+          rules={{ required: ValidateRules.required }}
           render={({ field }) => (
             <TextArea
               {...field}

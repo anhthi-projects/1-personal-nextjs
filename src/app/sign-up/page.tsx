@@ -27,7 +27,7 @@ import {
   SignUpFormContainer,
   SignUpTypography,
 } from "./sign-up.styled";
-type SignUpForm = Pick<UserModel, "username" | "password" | "name" | "email">;
+type SignUpForm = Pick<UserModel, "password" | "name" | "email">;
 
 const SignUp = () => {
   const {
@@ -69,7 +69,7 @@ const SignUp = () => {
   }, [error]);
 
   const onSubmit = (data: SignUpForm) => {
-    createUser(omit(data, "confirmPassword"));
+    createUser(data);
   };
 
   /**
@@ -80,36 +80,11 @@ const SignUp = () => {
     return (
       <SignUpFormContainer onSubmit={handleSubmit(onSubmit)}>
         <SignUpTypography>Sign Up</SignUpTypography>
-        <Controller
-          name="username"
-          control={control}
-          rules={{ required: ValidateRules.isRequired }}
-          render={({ field }) => (
-            <Input
-              {...field}
-              title="Username"
-              hasError={Boolean(errors["username"]?.message)}
-              description={errors["username"]?.message}
-            />
-          )}
-        />
-        <Controller
-          name="password"
-          control={control}
-          rules={{ required: ValidateRules.isRequired }}
-          render={({ field }) => (
-            <Password
-              {...field}
-              title="Password"
-              hasError={Boolean(errors["password"]?.message)}
-              description={errors["password"]?.message}
-            />
-          )}
-        />
+
         <Controller
           name="name"
           control={control}
-          rules={{ required: ValidateRules.isRequired }}
+          rules={{ required: ValidateRules.required }}
           render={({ field }) => (
             <Input
               {...field}
@@ -123,8 +98,8 @@ const SignUp = () => {
           name="email"
           control={control}
           rules={{
-            required: ValidateRules.isRequired,
-            pattern: ValidateRules.isEmailPattern,
+            required: ValidateRules.required,
+            pattern: ValidateRules.emailPattern,
           }}
           render={({ field }) => (
             <Input
@@ -135,7 +110,19 @@ const SignUp = () => {
             />
           )}
         />
-
+        <Controller
+          name="password"
+          control={control}
+          rules={{ required: ValidateRules.required }}
+          render={({ field }) => (
+            <Password
+              {...field}
+              title="Password"
+              hasError={Boolean(errors["password"]?.message)}
+              description={errors["password"]?.message}
+            />
+          )}
+        />
         <Button type="submit" variant="primary">
           Register
         </Button>
