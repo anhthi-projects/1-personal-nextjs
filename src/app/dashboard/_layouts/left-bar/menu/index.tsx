@@ -11,7 +11,7 @@ import { usePathname, useRouter } from "next/navigation";
 
 import { DashboardSubRoute } from "@/constants/routes";
 
-import { BrandTypography, MenuItem, MenuList } from "./left-bar.styled";
+import { MenuItem, MenuList } from "./menu.styled";
 
 interface MenuItemProps {
   label: string;
@@ -19,7 +19,7 @@ interface MenuItemProps {
   section: string;
 }
 
-export const LeftBar = () => {
+export const Menu = () => {
   const pathname = usePathname();
   const router = useRouter();
 
@@ -39,7 +39,6 @@ export const LeftBar = () => {
 
   return (
     <>
-      <BrandTypography>Dashboard</BrandTypography>
       <MenuList>
         {renderMenuItem({
           label: "Profile",

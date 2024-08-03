@@ -1,4 +1,6 @@
+"use client";
 import { Flex, Panel } from "@anhthi-projects/usy-ui";
+import { useSession } from "next-auth/react";
 
 import { ChangeUsername } from "./change-username";
 import { UploadAvatar } from "./upload-avatar";
@@ -6,6 +8,9 @@ import { UploadCV } from "./upload-cv";
 import { UserInfo } from "./user-info";
 
 const Profile = () => {
+  const { data: session, status } = useSession();
+  console.log(session);
+
   return (
     <Flex direction="row" gap="12px" wrap="wrap">
       <Flex grow={1} widthProps={{ minWidth: "300px" }}>

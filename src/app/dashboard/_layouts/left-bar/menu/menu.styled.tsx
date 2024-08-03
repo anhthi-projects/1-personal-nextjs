@@ -1,12 +1,6 @@
 import { usyColors, usyFontSizes, usySpacing } from "@anhthi-projects/usy-ui";
 import styled, { css } from "styled-components";
 
-export const BrandTypography = styled.h3`
-  margin: 40px auto auto -${usySpacing.px16};
-  text-align: center;
-  opacity: 0.8;
-`;
-
 export const MenuList = styled.div`
   display: flex;
   flex-direction: column;

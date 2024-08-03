@@ -9,9 +9,10 @@ import {
   Typography,
 } from "@anhthi-projects/usy-ui";
 import { redirect } from "next/navigation";
+import { signIn, useSession } from "next-auth/react";
 import { Controller, useForm } from "react-hook-form";
 
-import { useLoginMutation } from "@/client-apis/auth/auth.api";
+import { SessionStorageKeys } from "@/constants/app";
 import { AppRoute, DashboardSubRoute } from "@/constants/routes";
 import { ValidateRules } from "@/constants/validate";
 
@@ -30,6 +31,7 @@ type SignInForm = {
 };
 
 const Home = () => {
+  const { status: sessionStatus, data: sessionData } = useSession();
   const {
     control,
     formState: { errors },
@@ -38,22 +40,31 @@ const Home = () => {
     reValidateMode: "onBlur",
   });
 
-  const [signIn, { isSuccess, data }] = useLoginMutation();
-
   useEffect(() => {
-    if (isSuccess) {
-      sessionStorage.setItem("__access_token__", data.access_token);
-      sessionStorage.setItem("__refresh_token__", data.refresh_token);
+    if (sessionStatus === "authenticated") {
+      sessionStorage.setItem(
+        SessionStorageKeys.ACCESS_TOKEN,
+        sessionData.user.accessToken
+      );
+      sessionStorage.setItem(
+        SessionStorageKeys.REFRESH_TOKEN,
+        sessionData.user.refreshToken
+      );
+
       redirect(
         buildPath(AppRoute.DASHBOARD, {
           section: DashboardSubRoute.PROFILE,
         })
       );
     }
-  }, [isSuccess, data]);
+  }, [sessionStatus, sessionData]);
 
   const onSubmit = (data: SignInForm) => {
-    signIn(data);
+    signIn("credentials", {
+      email: data.email,
+      password: data.password,
+      redirect: false,
+    });
   };
 
   const renderSignInForm = () => {

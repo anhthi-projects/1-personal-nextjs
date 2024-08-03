@@ -1,7 +1,10 @@
 "use client";
 import { FC, ReactNode } from "react";
 
-import { LeftBar } from "./_layouts/left-bar";
+import { Brand } from "./_layouts/left-bar/brand";
+import { Menu } from "./_layouts/left-bar/menu";
+import { HiLoggedUser } from "./_layouts/right-bar/hi-logged-user";
+import { SignOut } from "./_layouts/right-bar/signout";
 import {
   LayoutContainer,
   MainContainer,
@@ -20,10 +23,14 @@ const DashboardLayout: FC<DashboardLayoutProps> = ({ children }) => {
   return (
     <LayoutContainer>
       <LeftBarContainer>
-        <LeftBar />
+        <Brand />
+        <Menu />
       </LeftBarContainer>
       <MainContainer>{children}</MainContainer>
-      <RightBarContainer>Right bar</RightBarContainer>
+      <RightBarContainer>
+        <HiLoggedUser />
+        <SignOut />
+      </RightBarContainer>
     </LayoutContainer>
   );
 };

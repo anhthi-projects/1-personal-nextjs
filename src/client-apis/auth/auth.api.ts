@@ -12,19 +12,26 @@ export const authApi = createApi({
   endpoints: (builder) => ({
     signUp: builder.mutation<UserModel, CreateUserRequest>({
       query: (payload) => ({
-        url: "/auth/sign-up",
+        url: "/auth/signup",
         method: "POST",
         body: payload,
       }),
     }),
-    login: builder.mutation<SignInResponse, SignInRequest>({
+    signIn: builder.mutation<SignInResponse, SignInRequest>({
       query: (payload) => ({
-        url: "/auth/login",
+        url: "/auth/signin",
         method: "POST",
         body: payload,
+      }),
+    }),
+    signOut: builder.mutation<null, void>({
+      query: () => ({
+        url: "/auth/signout",
+        method: "POST",
       }),
     }),
   }),
 });
 
-export const { useSignUpMutation, useLoginMutation } = authApi;
+export const { useSignUpMutation, useSignInMutation, useSignOutMutation } =
+  authApi;

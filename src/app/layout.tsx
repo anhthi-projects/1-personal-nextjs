@@ -2,11 +2,12 @@ import { Toast } from "@anhthi-projects/usy-ui";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 
-import "@anhthi-projects/usy-ui/dist/styles.css";
-
-import "./globals.css";
 import { StyledComponentsRegistry } from "@/app-core/registry";
 import { StoreProvider } from "@/app-core/store-provider";
+import { AuthProvider } from "@/providers/auth.provider";
+
+import "@anhthi-projects/usy-ui/dist/styles.css";
+import "./globals.css";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -26,12 +27,14 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
       <body className={poppins.className}>
-        <StoreProvider>
-          <StyledComponentsRegistry>
-            <Toast />
-            {children}
-          </StyledComponentsRegistry>
-        </StoreProvider>
+        <AuthProvider>
+          <StoreProvider>
+            <StyledComponentsRegistry>
+              <Toast />
+              {children}
+            </StyledComponentsRegistry>
+          </StoreProvider>
+        </AuthProvider>
       </body>
     </html>
   );
