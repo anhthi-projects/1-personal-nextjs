@@ -9,7 +9,7 @@ export interface UserModel {
   email: string;
   phone: string;
   jobPosition: string;
-  yearOfExp: string;
+  yearOfExp: number;
   aboutMe: string;
   avatarUrl: string;
   cvUrl: string;

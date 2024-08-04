@@ -3,7 +3,6 @@ import {
   Flex,
   GuyHackerIcon,
   ImageGallery,
-  usyColors,
   usySpacing,
 } from "@anhthi-projects/usy-ui";
 

@@ -1,9 +1,7 @@
+import { toastIns } from "@anhthi-projects/usy-ui";
 import axios, { HttpStatusCode } from "axios";
 import type { AuthOptions } from "next-auth";
 import CredentialsContainer from "next-auth/providers/credentials";
-
-import { UserModel } from "@/models/user.model";
-import { Tokens } from "@/types/token";
 
 export const authOptions: AuthOptions = {
   providers: [
@@ -26,7 +24,7 @@ export const authOptions: AuthOptions = {
 
         try {
           const userRes = await axios.post(
-            "http://localhost:4000/api/auth/signin",
+            `${process.env.SERVICE_URL}/auth/signin`,
             JSON.stringify({
               email: credentials?.email,
               password: credentials?.password,
@@ -45,13 +43,21 @@ export const authOptions: AuthOptions = {
     }),
   ],
   callbacks: {
-    jwt: async ({ token, user }) => {
-      return { ...token, ...user };
+    jwt: async ({ token, user, trigger, session }) => {
+      return trigger === "update"
+        ? {
+            ...token,
+            ...session,
+          }
+        : { ...token, ...user };
     },
     session: async ({ session, token }) => {
       session.user = token as any;
       return session;
     },
+  },
+  session: {
+    maxAge: 24 * 60 * 60, // 24 hours
   },
   pages: {
     signIn: "/",

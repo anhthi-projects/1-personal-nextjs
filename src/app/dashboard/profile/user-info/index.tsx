@@ -1,45 +1,77 @@
 "use client";
+import { FC, useEffect, useMemo } from "react";
+
 import {
   Box,
   Button,
   Flex,
   Input,
   TextArea,
+  toastIns,
   usySpacing,
 } from "@anhthi-projects/usy-ui";
+import { useSession } from "next-auth/react";
 import { Controller, useForm } from "react-hook-form";
 
+import { useUpdateUserByIdMutation } from "@/client-apis/users/users.api";
 import { ValidateRules } from "@/constants/validate";
 import { UserModel } from "@/models/user.model";
 
 import { FormContainer } from "./user-info.styled";
 
-type FormFields = Omit<
+type FormFields = Pick<
   UserModel,
-  | "id"
-  | "username"
-  | "password"
-  | "avatarUrl"
-  | "cvUrl"
-  | "refreshToken"
-  | "projects"
-  | "socialNetworks"
+  "name" | "email" | "phone" | "jobPosition" | "yearOfExp" | "aboutMe"
 >;
 
-export const UserInfo = () => {
+type UserInfoProps = {
+  userData?: UserModel;
+};
+
+export const UserInfo: FC<UserInfoProps> = ({ userData }) => {
+  const { data: session, update: updateSession } = useSession();
+  const [updateUserById, { data: updatedUser, isSuccess }] =
+    useUpdateUserByIdMutation();
+
   const {
     control,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm<FormFields>({
+    values: {
+      name: userData?.name || "",
+      email: userData?.email || "",
+      phone: userData?.phone || "",
+      jobPosition: userData?.jobPosition || "",
+      yearOfExp: userData?.yearOfExp || 0,
+      aboutMe: userData?.aboutMe || "",
+    },
     reValidateMode: "onBlur",
   });
 
-  console.log(errors);
+  useEffect(() => {
+    if (isSuccess) {
+      updateSession(updatedUser);
+      toastIns.success({
+        title: "Update success",
+        description: "Your new data was saved",
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isSuccess]);
 
-  const onSubmit = (data: FormFields) => {
-    console.log(data);
+  const onSubmit = (formData: FormFields) => {
+    console.log("getServerSession", userData);
+    console.log("useSession", session?.user);
+    userData?.id &&
+      updateUserById({
+        id: userData?.id || "",
+        payload: {
+          ...formData,
+          yearOfExp: parseInt(formData.yearOfExp.toString()),
+        },
+      });
   };
 
   const onReset = () => {

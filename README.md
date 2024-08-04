@@ -1,6 +1,5 @@
 ## Design Ideas
 
-- https://www.behance.net/gallery/35309541/Personal-Website-Design
 - https://chairhandles.gumroad.com/l/minimalweb
 - https://idesign.vn/graphic-design/kham-pha-giao-dien-dashboard-voi-loat-cam-hung-ve-xu-huong-thiet-ke-tinh-gian-403185.html
 

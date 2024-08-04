@@ -43,7 +43,7 @@ const SignUp = () => {
     if (isSuccess) {
       toastIns.success({
         title: "Success",
-        content: "Your registration has been done",
+        description: "Your registration has been done",
       });
       redirect(AppRoute.HOME);
     }
@@ -61,7 +61,7 @@ const SignUp = () => {
         case PrismaErrorCode.DUPLICATED: {
           toastIns.error({
             title: "Error",
-            content: `The ${errorMessage.fieldName} is already existed`,
+            description: `The ${errorMessage.fieldName} is already existed`,
           });
         }
       }

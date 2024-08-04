@@ -13,7 +13,7 @@ export const SignOut = () => {
 
   return (
     <Flex justifyContent="center" alignItems="center">
-      <Button variant="outline" onClick={handleSignOut}>
+      <Button variant="outline" size="small" onClick={handleSignOut}>
         Sign out
       </Button>
     </Flex>

@@ -6,6 +6,7 @@ import {
   Button,
   Input,
   Password,
+  toastIns,
   Typography,
 } from "@anhthi-projects/usy-ui";
 import { redirect } from "next/navigation";
@@ -59,12 +60,19 @@ const Home = () => {
     }
   }, [sessionStatus, sessionData]);
 
-  const onSubmit = (data: SignInForm) => {
-    signIn("credentials", {
+  const onSubmit = async (data: SignInForm) => {
+    const signInRes = await signIn("credentials", {
       email: data.email,
       password: data.password,
       redirect: false,
     });
+
+    if (!signInRes?.ok) {
+      toastIns.warning({
+        title: "Sign in failed",
+        description: "Your email or password are incorrect",
+      });
+    }
   };
 
   const renderSignInForm = () => {
