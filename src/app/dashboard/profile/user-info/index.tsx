@@ -1,11 +1,13 @@
 "use client";
-import { FC, useEffect, useMemo } from "react";
+import { FC, useEffect } from "react";
 
 import {
-  Box,
   Button,
   Flex,
   Input,
+  Select,
+  SelectItemType,
+  Tags,
   TextArea,
   toastIns,
   usySpacing,
@@ -21,8 +23,10 @@ import { FormContainer } from "./user-info.styled";
 
 type FormFields = Pick<
   UserModel,
-  "name" | "email" | "phone" | "jobPosition" | "yearOfExp" | "aboutMe"
->;
+  "name" | "email" | "phone" | "jobPosition" | "briefIntro" | "tags" | "aboutMe"
+> & {
+  yearOfExp: SelectItemType;
+};
 
 type UserInfoProps = {
   userData?: UserModel;
@@ -44,7 +48,12 @@ export const UserInfo: FC<UserInfoProps> = ({ userData }) => {
       email: userData?.email || "",
       phone: userData?.phone || "",
       jobPosition: userData?.jobPosition || "",
-      yearOfExp: userData?.yearOfExp || 0,
+      yearOfExp: {
+        label: userData?.yearOfExp || 0,
+        value: (userData?.yearOfExp || 0).toString(),
+      },
+      briefIntro: userData?.briefIntro || "",
+      tags: userData?.tags || [],
       aboutMe: userData?.aboutMe || "",
     },
     reValidateMode: "onBlur",
@@ -62,14 +71,12 @@ export const UserInfo: FC<UserInfoProps> = ({ userData }) => {
   }, [isSuccess]);
 
   const onSubmit = (formData: FormFields) => {
-    console.log("getServerSession", userData);
-    console.log("useSession", session?.user);
     userData?.id &&
       updateUserById({
         id: userData?.id || "",
         payload: {
           ...formData,
-          yearOfExp: parseInt(formData.yearOfExp.toString()),
+          yearOfExp: parseInt(formData.yearOfExp.value.toString()),
         },
       });
   };
@@ -82,7 +89,7 @@ export const UserInfo: FC<UserInfoProps> = ({ userData }) => {
    * Render
    */
 
-  const renderLeftColumn = () => {
+  const renderMainColumn = () => {
     return (
       <Flex direction="column" gap="18px" grow={1}>
         <Controller
@@ -118,7 +125,6 @@ export const UserInfo: FC<UserInfoProps> = ({ userData }) => {
           name="phone"
           control={control}
           rules={{
-            required: ValidateRules.required,
             pattern: ValidateRules.phonePattern,
           }}
           render={({ field }) => (
@@ -134,13 +140,12 @@ export const UserInfo: FC<UserInfoProps> = ({ userData }) => {
     );
   };
 
-  const renderRightColumn = () => {
+  const renderExtraColumn = () => {
     return (
       <Flex direction="column" gap="18px" grow={1}>
         <Controller
           name="jobPosition"
           control={control}
-          rules={{ required: ValidateRules.required }}
           render={({ field }) => (
             <Input
               {...field}
@@ -153,13 +158,30 @@ export const UserInfo: FC<UserInfoProps> = ({ userData }) => {
         <Controller
           name="yearOfExp"
           control={control}
-          rules={{ required: ValidateRules.required }}
+          render={({ field }) => (
+            <Select
+              {...field}
+              items={[
+                { label: "2 years", value: 2 },
+                { label: "5 years", value: 5 },
+                { label: "7 years", value: 7 },
+                { label: "10 years", value: 10 },
+              ]}
+              value={field.value}
+              title="Year of Experience"
+            />
+          )}
+        />
+        <Controller
+          name="briefIntro"
+          control={control}
           render={({ field }) => (
             <Input
               {...field}
-              title="Year of Experience"
-              hasError={Boolean(errors["yearOfExp"]?.message)}
-              description={errors["yearOfExp"]?.message}
+              value={field.value.toString()}
+              title="Brief Intro"
+              hasError={Boolean(errors["briefIntro"]?.message)}
+              description={errors["briefIntro"]?.message}
             />
           )}
         />
@@ -170,30 +192,44 @@ export const UserInfo: FC<UserInfoProps> = ({ userData }) => {
   return (
     <FormContainer onSubmit={handleSubmit(onSubmit)}>
       <Flex gap={usySpacing.px32}>
-        {renderLeftColumn()}
-        {renderRightColumn()}
+        {renderMainColumn()}
+        {renderExtraColumn()}
       </Flex>
-      <Box
+      <Flex
+        direction="column"
+        gap="18px"
         marginProps={{
           marginTop: usySpacing.px20,
           marginBottom: usySpacing.px32,
         }}
       >
         <Controller
+          name="tags"
+          control={control}
+          render={({ field }) => (
+            <Tags
+              title="Tags"
+              tags={field.value}
+              onAdd={(tags) => field.onChange(tags)}
+              onRemove={(tags) => field.onChange(tags)}
+            />
+          )}
+        />
+        <Controller
           name="aboutMe"
           control={control}
-          rules={{ required: ValidateRules.required }}
           render={({ field }) => (
             <TextArea
               {...field}
-              minHeight="200px"
+              minHeight="150px"
+              maxHeight="300px"
               title="About Me"
               hasError={Boolean(errors["aboutMe"]?.message)}
               description={errors["aboutMe"]?.message}
             />
           )}
         />
-      </Box>
+      </Flex>
       <Flex gap={usySpacing.px20} justifyContent="center">
         <Button type="submit" variant="primary" width="100px">
           Update

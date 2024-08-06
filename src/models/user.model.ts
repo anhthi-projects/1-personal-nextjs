@@ -10,6 +10,7 @@ export interface UserModel {
   phone: string;
   jobPosition: string;
   yearOfExp: number;
+  briefIntro: string;
   aboutMe: string;
   avatarUrl: string;
   cvUrl: string;

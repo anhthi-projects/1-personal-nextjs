@@ -16,10 +16,10 @@ import {
 } from "./page.styled";
 
 const Intro = async ({ params }: any) => {
-  const { data, error } = await getUserByUsername(params.username);
+  // const { data, error } = await getUserByUsername(params.username);
 
-  console.log("Intro", data);
-  console.log("Intro", error);
+  // console.log("Intro", data);
+  // console.log("Intro", error);
 
   const renderIntroAndReference = () => {
     return (
@@ -38,7 +38,7 @@ const Intro = async ({ params }: any) => {
         <Flex
           display="inline-flex"
           gap="12px"
-          marginProps={{ marginTop: usySpacing.px10 }}
+          marginProps={{ marginTop: "10px" }}
         >
           <Button variant="primary">Download CV</Button>
           <Button variant="outline">View Github</Button>

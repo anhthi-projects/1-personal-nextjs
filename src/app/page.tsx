@@ -1,5 +1,5 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 import {
   buildPath,
@@ -33,6 +33,7 @@ type SignInForm = {
 
 const Home = () => {
   const { status: sessionStatus, data: sessionData } = useSession();
+  const isSubmitted = useRef(false);
   const {
     control,
     formState: { errors },
@@ -42,7 +43,7 @@ const Home = () => {
   });
 
   useEffect(() => {
-    if (sessionStatus === "authenticated") {
+    if (sessionStatus === "authenticated" && isSubmitted.current) {
       sessionStorage.setItem(
         SessionStorageKeys.ACCESS_TOKEN,
         sessionData.user.accessToken
@@ -66,6 +67,8 @@ const Home = () => {
       password: data.password,
       redirect: false,
     });
+
+    isSubmitted.current = true;
 
     if (!signInRes?.ok) {
       toastIns.warning({
