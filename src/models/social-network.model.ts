@@ -1,9 +1,9 @@
 import { UserModel } from "./user.model";
 
-export interface SocialNetwork {
+export interface SocialNetworkModel {
   id: string;
   name: string;
   url: string;
   userId: string;
-  owner: UserModel;
+  user: UserModel;
 }

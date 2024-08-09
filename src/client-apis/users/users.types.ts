@@ -1,3 +1,10 @@
 import { UserModel } from "@/models/user.model";
 
-export type UpdateUserRequest = { id: string; payload: Partial<UserModel> };
+export type CreateUserRequest = {
+  payload: Partial<UserModel>;
+};
+
+export type UpdateUserRequest = {
+  userId: string;
+  payload: Partial<UserModel>;
+};

@@ -13,7 +13,7 @@ import { redirect } from "next/navigation";
 import { signIn, useSession } from "next-auth/react";
 import { Controller, useForm } from "react-hook-form";
 
-import { SessionStorageKeys } from "@/constants/app";
+import { StorageKeys } from "@/constants/app";
 import { AppRoute, DashboardSubRoute } from "@/constants/routes";
 import { ValidateRules } from "@/constants/validate";
 
@@ -44,12 +44,12 @@ const Home = () => {
 
   useEffect(() => {
     if (sessionStatus === "authenticated" && isSubmitted.current) {
-      sessionStorage.setItem(
-        SessionStorageKeys.ACCESS_TOKEN,
+      localStorage.setItem(
+        StorageKeys.ACCESS_TOKEN,
         sessionData.user.accessToken
       );
-      sessionStorage.setItem(
-        SessionStorageKeys.REFRESH_TOKEN,
+      localStorage.setItem(
+        StorageKeys.REFRESH_TOKEN,
         sessionData.user.refreshToken
       );
 

@@ -1,11 +1,11 @@
 import { ReactNode } from "react";
 
 import {
-  BadgeCheckedOutlineIcon,
-  BookOutlineIcon,
-  ObjectsColumnOutlineIcon,
-  ShieldCheckedOutlineIcon,
-  UserCircleOutlineIcon,
+  BadgeCheckIcon,
+  BookIcon,
+  ObjectsColumnIcon,
+  ShieldCheckIcon,
+  UserCircleIcon,
 } from "@anhthi-projects/usy-ui";
 import { usePathname, useRouter } from "next/navigation";
 
@@ -42,27 +42,27 @@ export const Menu = () => {
       <MenuList>
         {renderMenuItem({
           label: "Profile",
-          icon: <UserCircleOutlineIcon />,
+          icon: <UserCircleIcon />,
           section: DashboardSubRoute.PROFILE,
         })}
         {renderMenuItem({
           label: "Articles",
-          icon: <BookOutlineIcon />,
+          icon: <BookIcon />,
           section: DashboardSubRoute.ARTICLES,
         })}
         {renderMenuItem({
           label: "Portfolios",
-          icon: <ObjectsColumnOutlineIcon />,
+          icon: <ObjectsColumnIcon />,
           section: DashboardSubRoute.PORTFOLIOS,
         })}
         {renderMenuItem({
           label: "Experience",
-          icon: <BadgeCheckedOutlineIcon />,
+          icon: <BadgeCheckIcon />,
           section: DashboardSubRoute.EXPERIENCE,
         })}
         {renderMenuItem({
           label: "Skills",
-          icon: <ShieldCheckedOutlineIcon />,
+          icon: <ShieldCheckIcon />,
           section: DashboardSubRoute.SKILLS,
         })}
       </MenuList>

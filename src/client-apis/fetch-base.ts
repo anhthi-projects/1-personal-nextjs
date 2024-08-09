@@ -1,6 +1,6 @@
 import { fetchBaseQuery } from "@reduxjs/toolkit/query";
 
-import { SessionStorageKeys } from "@/constants/app";
+import { StorageKeys } from "@/constants/app";
 import { AppException } from "@/types/exception";
 
 export const createRtkFetchBase = () =>
@@ -9,9 +9,7 @@ export const createRtkFetchBase = () =>
     prepareHeaders: (headers) => {
       headers.set("Accept", "application/json");
 
-      const accessToken = sessionStorage.getItem(
-        SessionStorageKeys.ACCESS_TOKEN
-      );
+      const accessToken = localStorage.getItem(StorageKeys.ACCESS_TOKEN);
       accessToken && headers.set("Authorization", `Bearer ${accessToken}`);
 
       return headers;

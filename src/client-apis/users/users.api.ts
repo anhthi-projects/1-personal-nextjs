@@ -11,8 +11,8 @@ export const usersApi = createApi({
   baseQuery: createRtkFetchBase(),
   endpoints: (builder) => ({
     updateUserById: builder.mutation<UserModel, UpdateUserRequest>({
-      query: ({ id, payload }) => ({
-        url: `/users/${id}`,
+      query: ({ userId, payload }) => ({
+        url: `/users/${userId}`,
         method: "PUT",
         body: payload,
       }),

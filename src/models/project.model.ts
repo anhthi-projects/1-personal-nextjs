@@ -6,5 +6,5 @@ export interface ProjectModel {
   description: string;
   techStacks: string[];
   userId: string;
-  owner: UserModel;
+  user: UserModel;
 }

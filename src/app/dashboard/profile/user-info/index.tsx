@@ -34,7 +34,7 @@ type UserInfoProps = {
 
 export const UserInfo: FC<UserInfoProps> = ({ userData }) => {
   const { data: session, update: updateSession } = useSession();
-  const [updateUserById, { data: updatedUser, isSuccess }] =
+  const [updateUserById, { data: updatedUser, isLoading, isSuccess }] =
     useUpdateUserByIdMutation();
 
   const {
@@ -71,14 +71,17 @@ export const UserInfo: FC<UserInfoProps> = ({ userData }) => {
   }, [isSuccess]);
 
   const onSubmit = (formData: FormFields) => {
-    userData?.id &&
-      updateUserById({
-        id: userData?.id || "",
-        payload: {
-          ...formData,
-          yearOfExp: parseInt(formData.yearOfExp.value.toString()),
-        },
-      });
+    if (!userData?.id) {
+      return null;
+    }
+
+    updateUserById({
+      userId: userData?.id,
+      payload: {
+        ...formData,
+        yearOfExp: parseInt(formData.yearOfExp.value.toString()),
+      },
+    });
   };
 
   const onReset = () => {
@@ -146,14 +149,7 @@ export const UserInfo: FC<UserInfoProps> = ({ userData }) => {
         <Controller
           name="jobPosition"
           control={control}
-          render={({ field }) => (
-            <Input
-              {...field}
-              title="Job Position"
-              hasError={Boolean(errors["jobPosition"]?.message)}
-              description={errors["jobPosition"]?.message}
-            />
-          )}
+          render={({ field }) => <Input {...field} title="Job Position" />}
         />
         <Controller
           name="yearOfExp"
@@ -180,8 +176,6 @@ export const UserInfo: FC<UserInfoProps> = ({ userData }) => {
               {...field}
               value={field.value.toString()}
               title="Brief Intro"
-              hasError={Boolean(errors["briefIntro"]?.message)}
-              description={errors["briefIntro"]?.message}
             />
           )}
         />
@@ -224,14 +218,17 @@ export const UserInfo: FC<UserInfoProps> = ({ userData }) => {
               minHeight="150px"
               maxHeight="300px"
               title="About Me"
-              hasError={Boolean(errors["aboutMe"]?.message)}
-              description={errors["aboutMe"]?.message}
             />
           )}
         />
       </Flex>
       <Flex gap={usySpacing.px20} justifyContent="center">
-        <Button type="submit" variant="primary" width="100px">
+        <Button
+          type="submit"
+          variant="primary"
+          width="100px"
+          isLoading={isLoading}
+        >
           Update
         </Button>
         <Button variant="outline" onClick={onReset} width="100px">

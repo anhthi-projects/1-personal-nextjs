@@ -1,10 +1,11 @@
 "use client";
 import { FC, ReactNode } from "react";
 
+import { Scrollable } from "@anhthi-projects/usy-ui";
+
 import { Brand } from "./_layouts/left-bar/brand";
 import { Menu } from "./_layouts/left-bar/menu";
 import { HiLoggedUser } from "./_layouts/right-bar/hi-logged-user";
-import { SignOut } from "./_layouts/right-bar/signout";
 import {
   LayoutContainer,
   MainContainer,
@@ -26,10 +27,11 @@ const DashboardLayout: FC<DashboardLayoutProps> = ({ children }) => {
         <Brand />
         <Menu />
       </LeftBarContainer>
-      <MainContainer>{children}</MainContainer>
+      <Scrollable heightProps={{ maxHeight: "100vh" }}>
+        <MainContainer>{children}</MainContainer>
+      </Scrollable>
       <RightBarContainer>
         <HiLoggedUser />
-        <SignOut />
       </RightBarContainer>
     </LayoutContainer>
   );

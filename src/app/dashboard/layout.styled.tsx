@@ -21,7 +21,6 @@ export const MainContainer = styled.div`
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
   padding: ${usySpacing.px32} 0;
 `;
 

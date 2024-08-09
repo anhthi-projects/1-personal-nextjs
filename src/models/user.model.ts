@@ -1,5 +1,5 @@
 import { ProjectModel } from "./project.model";
-import { SocialNetwork } from "./social-network.model";
+import { SocialNetworkModel } from "./social-network.model";
 
 export interface UserModel {
   id: string;
@@ -16,5 +16,5 @@ export interface UserModel {
   cvUrl: string;
   tags: string[];
   projects: ProjectModel[];
-  socialNetworks: SocialNetwork[];
+  socialNetworks: SocialNetworkModel[];
 }
