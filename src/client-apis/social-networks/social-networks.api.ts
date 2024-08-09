@@ -4,7 +4,10 @@ import { SocialNetworkModel } from "@/models/social-network.model";
 
 import { createRtkFetchBase } from "../fetch-base";
 
-import { CreateSocialNetworkRequest } from "./social-networks.types";
+import {
+  CreateSocialNetworkRequest,
+  DeleteSocialNetworkRequest,
+} from "./social-networks.types";
 
 export const socialNetworksApi = createApi({
   reducerPath: "social-networks",
@@ -20,7 +23,19 @@ export const socialNetworksApi = createApi({
         body: payload,
       }),
     }),
+    deleteSocialNetwork: builder.mutation<
+      SocialNetworkModel,
+      DeleteSocialNetworkRequest
+    >({
+      query: ({ id }) => ({
+        url: `/social-networks/${id}`,
+        method: "DELETE",
+      }),
+    }),
   }),
 });
 
-export const { useCreateSocialNetworkMutation } = socialNetworksApi;
+export const {
+  useCreateSocialNetworkMutation,
+  useDeleteSocialNetworkMutation,
+} = socialNetworksApi;

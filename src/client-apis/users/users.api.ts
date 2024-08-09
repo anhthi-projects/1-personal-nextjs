@@ -10,6 +10,11 @@ export const usersApi = createApi({
   reducerPath: "users",
   baseQuery: createRtkFetchBase(),
   endpoints: (builder) => ({
+    getUserById: builder.query<UserModel, string>({
+      query: (userId) => ({
+        url: `/users/${userId}`,
+      }),
+    }),
     updateUserById: builder.mutation<UserModel, UpdateUserRequest>({
       query: ({ userId, payload }) => ({
         url: `/users/${userId}`,
@@ -20,4 +25,4 @@ export const usersApi = createApi({
   }),
 });
 
-export const { useUpdateUserByIdMutation } = usersApi;
+export const { useGetUserByIdQuery, useUpdateUserByIdMutation } = usersApi;

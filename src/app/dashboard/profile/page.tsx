@@ -2,6 +2,7 @@ import { Flex, Panel, PanelTitle } from "@anhthi-projects/usy-ui";
 import { getServerSession } from "next-auth";
 
 import { authOptions } from "@/app/api/auth/[...nextauth]/options";
+import { getSocialNetworkByUserId } from "@/client-apis/social-networks/social-networks.fetch";
 
 import { PhotoGallery } from "./photo-gallery";
 import { SocialNetworks } from "./social-networks";
@@ -10,6 +11,9 @@ import { UserInfo } from "./user-info";
 
 const Profile = async () => {
   const session = await getServerSession(authOptions);
+  const { data: socialNetworks } = await getSocialNetworkByUserId(
+    session?.user.id || ""
+  );
 
   return (
     <>
@@ -31,7 +35,7 @@ const Profile = async () => {
             <UploadCV />
           </Panel>
           <Panel title={<PanelTitle title="Social Networks" size="medium" />}>
-            <SocialNetworks />
+            <SocialNetworks socialNetworks={socialNetworks} />
           </Panel>
         </Flex>
       </Flex>

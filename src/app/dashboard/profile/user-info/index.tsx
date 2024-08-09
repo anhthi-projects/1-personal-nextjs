@@ -43,7 +43,7 @@ export const UserInfo: FC<UserInfoProps> = ({ userData }) => {
     reset,
     formState: { errors },
   } = useForm<FormFields>({
-    values: {
+    defaultValues: {
       name: userData?.name || "",
       email: userData?.email || "",
       phone: userData?.phone || "",
