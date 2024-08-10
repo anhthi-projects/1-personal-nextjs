@@ -1,5 +1,24 @@
+export enum PrismaErrorCode {
+  DUPLICATED = "P2002",
+}
+
+export enum ValidationErrorCode {
+  MIN_LENGTH = "minLength",
+  MAX_LENGTH = "maxLength",
+}
+
+export enum HttpErrorCode {
+  FORBIDDEN = "403",
+}
+
+/**
+ * AppException
+ */
+
 export interface ExceptionMessageDetails {
-  code: string;
+  code: keyof typeof PrismaErrorCode &
+    keyof typeof ValidationErrorCode &
+    keyof typeof HttpErrorCode;
   description: string;
 }
 

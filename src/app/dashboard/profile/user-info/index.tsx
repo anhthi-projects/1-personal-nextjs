@@ -29,10 +29,10 @@ type FormFields = Pick<
 };
 
 type UserInfoProps = {
-  userData?: UserModel;
+  user?: UserModel;
 };
 
-export const UserInfo: FC<UserInfoProps> = ({ userData }) => {
+export const UserInfo: FC<UserInfoProps> = ({ user }) => {
   const { data: session, update: updateSession } = useSession();
   const [updateUserById, { data: updatedUser, isLoading, isSuccess }] =
     useUpdateUserByIdMutation();
@@ -44,17 +44,17 @@ export const UserInfo: FC<UserInfoProps> = ({ userData }) => {
     formState: { errors },
   } = useForm<FormFields>({
     defaultValues: {
-      name: userData?.name || "",
-      email: userData?.email || "",
-      phone: userData?.phone || "",
-      jobPosition: userData?.jobPosition || "",
+      name: user?.name || "",
+      email: user?.email || "",
+      phone: user?.phone || "",
+      jobPosition: user?.jobPosition || "",
       yearOfExp: {
-        label: userData?.yearOfExp || 0,
-        value: (userData?.yearOfExp || 0).toString(),
+        label: user?.yearOfExp || 0,
+        value: (user?.yearOfExp || 0).toString(),
       },
-      briefIntro: userData?.briefIntro || "",
-      tags: userData?.tags || [],
-      aboutMe: userData?.aboutMe || "",
+      briefIntro: user?.briefIntro || "",
+      tags: user?.tags || [],
+      aboutMe: user?.aboutMe || "",
     },
     reValidateMode: "onBlur",
   });
@@ -71,12 +71,12 @@ export const UserInfo: FC<UserInfoProps> = ({ userData }) => {
   }, [isSuccess]);
 
   const onSubmit = (formData: FormFields) => {
-    if (!userData?.id) {
+    if (!user?.id) {
       return null;
     }
 
     updateUserById({
-      userId: userData?.id,
+      userId: user?.id,
       payload: {
         ...formData,
         yearOfExp: parseInt(formData.yearOfExp.value.toString()),
@@ -158,10 +158,10 @@ export const UserInfo: FC<UserInfoProps> = ({ userData }) => {
             <Select
               {...field}
               items={[
-                { label: "2 years", value: 2 },
-                { label: "5 years", value: 5 },
-                { label: "7 years", value: 7 },
-                { label: "10 years", value: 10 },
+                { id: "2-years", label: "2 years", value: 2 },
+                { id: "5-years", label: "5 years", value: 5 },
+                { id: "7-years", label: "7 years", value: 7 },
+                { id: "10-years", label: "10 years", value: 10 },
               ]}
               value={field.value}
               title="Year of Experience"

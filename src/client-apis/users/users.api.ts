@@ -1,23 +1,29 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 
 import { UserModel } from "@/models/user.model";
+import { AppException } from "@/types/exception";
 
 import { createRtkFetchBase } from "../fetch-base";
 
-import { UpdateUserRequest } from "./users.types";
+import { ChangeUsernameRequest, UpdateUserRequest } from "./users.types";
 
 export const usersApi = createApi({
   reducerPath: "users",
   baseQuery: createRtkFetchBase(),
   endpoints: (builder) => ({
-    getUserById: builder.query<UserModel, string>({
-      query: (userId) => ({
-        url: `/users/${userId}`,
-      }),
-    }),
     updateUserById: builder.mutation<UserModel, UpdateUserRequest>({
       query: ({ userId, payload }) => ({
-        url: `/users/${userId}`,
+        url: `/users/${userId}/update`,
+        method: "PUT",
+        body: payload,
+      }),
+    }),
+    changeUsername: builder.mutation<
+      UserModel | AppException,
+      ChangeUsernameRequest
+    >({
+      query: ({ userId, payload }) => ({
+        url: `/users/${userId}/change-username`,
         method: "PUT",
         body: payload,
       }),
@@ -25,4 +31,5 @@ export const usersApi = createApi({
   }),
 });
 
-export const { useGetUserByIdQuery, useUpdateUserByIdMutation } = usersApi;
+export const { useUpdateUserByIdMutation, useChangeUsernameMutation } =
+  usersApi;

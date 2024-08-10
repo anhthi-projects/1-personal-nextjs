@@ -1,5 +1,5 @@
 "use client";
-import { usyColors } from "@anhthi-projects/usy-ui";
+import { usyColors, Scrollable } from "@anhthi-projects/usy-ui";
 import styled from "styled-components";
 
 import { MAX_WIDTH } from "@/styles/constants";
@@ -25,11 +25,7 @@ export const SideBarContainer = styled.div`
   border-right: 1px solid ${usyColors.light1};
 `;
 
-export const ContentContainer = styled.div`
+export const ContentScrollable = styled(Scrollable)`
   flex-grow: 1;
-  min-height: 100vh;
-  max-height: 100vh;
-  padding: 90px 60px 30px 100px;
   border-right: 1px solid ${usyColors.light1};
-  overflow: hidden auto;
 `;

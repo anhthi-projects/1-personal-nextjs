@@ -22,18 +22,22 @@ export const authOptions: AuthOptions = {
           return null;
         }
 
+        const payload = JSON.stringify({
+          email: credentials?.email,
+          password: credentials?.password,
+        });
+
+        const config = {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        };
+
         try {
           const userRes = await axios.post(
             `${process.env.SERVICE_URL}/auth/signin`,
-            JSON.stringify({
-              email: credentials?.email,
-              password: credentials?.password,
-            }),
-            {
-              headers: {
-                "Content-Type": "application/json",
-              },
-            }
+            payload,
+            config
           );
           return userRes.status === HttpStatusCode.Ok ? userRes.data : null;
         } catch (error) {

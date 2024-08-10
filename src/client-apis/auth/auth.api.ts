@@ -4,7 +4,7 @@ import { UserModel } from "@/models/user.model";
 
 import { createRtkFetchBase } from "../fetch-base";
 
-import { CreateUserRequest, SignInRequest, SignInResponse } from "./auth.types";
+import { CreateUserRequest } from "./auth.types";
 
 export const authApi = createApi({
   reducerPath: "auth",

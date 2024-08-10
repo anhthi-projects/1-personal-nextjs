@@ -45,7 +45,6 @@ export const HiLoggedUser = () => {
             </Typography>
           </DropdownMenuTrigger>
           <DropdownMenuOverlay>
-            <DropdownMenuItem label="Change username" />
             <DropdownMenuItem label="Change password" />
             <DropdownMenuItem label="Sign out" onClick={handleSignOut} />
           </DropdownMenuOverlay>

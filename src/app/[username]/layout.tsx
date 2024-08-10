@@ -2,7 +2,7 @@ import { FC, ReactNode, Suspense } from "react";
 
 import { SideBar } from "./_layouts/sidebar";
 import {
-  ContentContainer,
+  ContentScrollable,
   PersonalWrapper,
   SideBarContainer,
 } from "./layout.styled";
@@ -21,9 +21,12 @@ const PersonalLayout: FC<PersonalLayoutProps> = ({ params, children }) => {
       <SideBarContainer>
         <SideBar username={params.username} />
       </SideBarContainer>
-      <ContentContainer>
+      <ContentScrollable
+        heightProps={{ minHeight: "100vh", maxHeight: "100vh" }}
+        paddingProps={{ padding: "90px 60px 30px 100px" }}
+      >
         <Suspense fallback={<Loading />}>{children}</Suspense>
-      </ContentContainer>
+      </ContentScrollable>
     </PersonalWrapper>
   );
 };

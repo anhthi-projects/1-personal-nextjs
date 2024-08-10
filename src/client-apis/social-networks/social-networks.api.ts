@@ -18,7 +18,7 @@ export const socialNetworksApi = createApi({
       CreateSocialNetworkRequest
     >({
       query: ({ payload }) => ({
-        url: "/social-networks",
+        url: "/social-networks/create",
         method: "POST",
         body: payload,
       }),
@@ -28,7 +28,7 @@ export const socialNetworksApi = createApi({
       DeleteSocialNetworkRequest
     >({
       query: ({ id }) => ({
-        url: `/social-networks/${id}`,
+        url: `/social-networks/${id}/delete`,
         method: "DELETE",
       }),
     }),

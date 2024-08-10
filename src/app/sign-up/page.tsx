@@ -16,8 +16,11 @@ import { useSignUpMutation } from "@/client-apis/auth/auth.api";
 import { AppRoute } from "@/constants/routes";
 import { ValidateRules } from "@/constants/validate";
 import { UserModel } from "@/models/user.model";
-import { AppException } from "@/types/exception";
-import { PrismaErrorCode } from "@/types/prisma";
+import {
+  AppException,
+  HttpErrorCode,
+  PrismaErrorCode,
+} from "@/types/exception";
 
 import {
   Illustration,
@@ -27,6 +30,7 @@ import {
   SignUpFormContainer,
   SignUpTypography,
 } from "./sign-up.styled";
+
 type SignUpForm = Pick<UserModel, "password" | "name" | "email">;
 
 const SignUp = () => {
@@ -37,7 +41,7 @@ const SignUp = () => {
   } = useForm<SignUpForm>({
     reValidateMode: "onBlur",
   });
-  const [createUser, { isSuccess, error }] = useSignUpMutation();
+  const [createUser, { isSuccess, error: signUpError }] = useSignUpMutation();
 
   useEffect(() => {
     if (isSuccess) {
@@ -50,12 +54,12 @@ const SignUp = () => {
   }, [isSuccess]);
 
   useEffect(() => {
-    if (!error) {
+    if (!signUpError) {
       return;
     }
 
-    if ("data" in error) {
-      const errorMessage = (error.data as AppException)?.message[0];
+    if ("data" in signUpError) {
+      const errorMessage = (signUpError.data as AppException)?.message[0];
 
       switch (errorMessage.details.code) {
         case PrismaErrorCode.DUPLICATED: {
@@ -66,7 +70,7 @@ const SignUp = () => {
         }
       }
     }
-  }, [error]);
+  }, [signUpError]);
 
   const onSubmit = (data: SignUpForm) => {
     createUser(data);
