@@ -1,4 +1,4 @@
-import { Toast } from "@anhthi-projects/usy-ui";
+import { Toast } from "@usy-ui/themes";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 
@@ -6,7 +6,7 @@ import { StyledComponentsRegistry } from "@/app-core/registry";
 import { StoreProvider } from "@/app-core/store-provider";
 import { AuthProvider } from "@/providers/auth.provider";
 
-import "@anhthi-projects/usy-ui/dist/styles.css";
+import "@usy-ui/themes/dist/styles.css";
 import "./globals.css";
 
 const poppins = Poppins({

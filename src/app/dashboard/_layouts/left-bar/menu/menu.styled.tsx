@@ -1,4 +1,4 @@
-import { usyColors, usyFontSizes, usySpacing } from "@anhthi-projects/usy-ui";
+import { usyColors, usyFontSizes, usySpacing } from "@usy-ui/themes";
 import styled, { css } from "styled-components";
 
 export const MenuList = styled.div`

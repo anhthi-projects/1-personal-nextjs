@@ -6,7 +6,7 @@ import {
   ObjectsColumnIcon,
   ShieldCheckIcon,
   UserCircleIcon,
-} from "@anhthi-projects/usy-ui";
+} from "@usy-ui/themes";
 import { usePathname, useRouter } from "next/navigation";
 
 import { DashboardSubRoute } from "@/constants/routes";

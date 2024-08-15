@@ -1,4 +1,4 @@
-import { Flex, Panel, PanelTitle } from "@anhthi-projects/usy-ui";
+import { Flex, Panel, PanelTitle } from "@usy-ui/themes";
 import { getServerSession } from "next-auth";
 
 import { authOptions } from "@/app/api/auth/[...nextauth]/options";

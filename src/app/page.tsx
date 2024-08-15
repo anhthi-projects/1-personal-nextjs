@@ -8,7 +8,7 @@ import {
   Password,
   toastIns,
   Typography,
-} from "@anhthi-projects/usy-ui";
+} from "@usy-ui/themes";
 import { redirect } from "next/navigation";
 import { signIn, useSession } from "next-auth/react";
 import { Controller, useForm } from "react-hook-form";
@@ -111,7 +111,7 @@ const Home = () => {
             />
           )}
         />
-        <Button type="submit" variant="primary">
+        <Button type="submit" variant="filled">
           Sign In
         </Button>
         <Typography size="small" align="center">

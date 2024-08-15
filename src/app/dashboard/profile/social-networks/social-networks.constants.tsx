@@ -4,7 +4,7 @@ import {
   BrandInstagramIcon,
   BrandLinkedinIcon,
   SelectItemType,
-} from "@anhthi-projects/usy-ui";
+} from "@usy-ui/themes";
 
 export type SocialNetworkValue = { name: string; url: string };
 

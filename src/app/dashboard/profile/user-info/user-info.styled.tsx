@@ -1,4 +1,4 @@
-import { usySpacing } from "@anhthi-projects/usy-ui";
+import { usySpacing } from "@usy-ui/themes";
 import styled from "styled-components";
 
 export const FormContainer = styled.form`

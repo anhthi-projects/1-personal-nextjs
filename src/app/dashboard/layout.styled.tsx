@@ -1,5 +1,5 @@
 "use client";
-import { usyColors, usySpacing } from "@anhthi-projects/usy-ui";
+import { usyColors, usySpacing } from "@usy-ui/themes";
 import styled from "styled-components";
 
 export const LayoutContainer = styled.div`

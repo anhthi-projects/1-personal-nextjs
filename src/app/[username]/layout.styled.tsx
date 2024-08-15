@@ -1,5 +1,5 @@
 "use client";
-import { usyColors, Scrollable } from "@anhthi-projects/usy-ui";
+import { usyColors, Scrollable } from "@usy-ui/themes";
 import styled from "styled-components";
 
 import { MAX_WIDTH } from "@/styles/constants";

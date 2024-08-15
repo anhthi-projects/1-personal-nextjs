@@ -11,7 +11,7 @@ import {
   TextArea,
   toastIns,
   usySpacing,
-} from "@anhthi-projects/usy-ui";
+} from "@usy-ui/themes";
 import { useSession } from "next-auth/react";
 import { Controller, useForm } from "react-hook-form";
 
@@ -225,7 +225,7 @@ export const UserInfo: FC<UserInfoProps> = ({ user }) => {
       <Flex gap={usySpacing.px20} justifyContent="center">
         <Button
           type="submit"
-          variant="primary"
+          variant="filled"
           width="100px"
           isLoading={isLoading}
         >

@@ -1,4 +1,4 @@
-import { TrashBinIcon, usyColors } from "@anhthi-projects/usy-ui";
+import { TrashBinIcon, usyColors } from "@usy-ui/themes";
 import styled from "styled-components";
 
 export const StyledTrashBinIcon = styled(TrashBinIcon)`

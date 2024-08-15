@@ -1,4 +1,4 @@
-import { toastIns } from "@anhthi-projects/usy-ui";
+import { toastIns } from "@usy-ui/themes";
 import axios, { HttpStatusCode } from "axios";
 import type { AuthOptions } from "next-auth";
 import CredentialsContainer from "next-auth/providers/credentials";

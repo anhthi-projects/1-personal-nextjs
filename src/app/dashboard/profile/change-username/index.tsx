@@ -1,13 +1,7 @@
 "use client";
 import { FC, useEffect } from "react";
 
-import {
-  Button,
-  Flex,
-  Input,
-  toastIns,
-  usySpacing,
-} from "@anhthi-projects/usy-ui";
+import { Button, Flex, Input, toastIns, usySpacing } from "@usy-ui/themes";
 import { useSession } from "next-auth/react";
 import { Controller, useForm } from "react-hook-form";
 

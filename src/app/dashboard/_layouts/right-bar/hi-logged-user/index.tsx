@@ -10,7 +10,7 @@ import {
   Flex,
   Typography,
   usySpacing,
-} from "@anhthi-projects/usy-ui";
+} from "@usy-ui/themes";
 import { signOut as nextAuthSignOut, useSession } from "next-auth/react";
 
 import { useSignOutMutation } from "@/client-apis/auth/auth.api";

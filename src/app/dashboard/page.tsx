@@ -1,5 +1,5 @@
 "use client";
-import { buildPath } from "@anhthi-projects/usy-ui";
+import { buildPath } from "@usy-ui/themes";
 import { redirect } from "next/navigation";
 import { useSession } from "next-auth/react";
 

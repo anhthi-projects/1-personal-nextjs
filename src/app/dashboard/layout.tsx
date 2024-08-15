@@ -1,7 +1,7 @@
 "use client";
 import { FC, ReactNode } from "react";
 
-import { Scrollable } from "@anhthi-projects/usy-ui";
+import { Scrollable } from "@usy-ui/themes";
 
 import { Brand } from "./_layouts/left-bar/brand";
 import { Menu } from "./_layouts/left-bar/menu";

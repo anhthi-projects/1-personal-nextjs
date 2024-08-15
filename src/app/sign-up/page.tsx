@@ -1,13 +1,7 @@
 "use client";
 import { useEffect } from "react";
 
-import {
-  Button,
-  Input,
-  Password,
-  Typography,
-  toastIns,
-} from "@anhthi-projects/usy-ui";
+import { Button, Input, Password, Typography, toastIns } from "@usy-ui/themes";
 import { omit } from "lodash";
 import { redirect } from "next/navigation";
 import { Controller, useForm } from "react-hook-form";
@@ -127,7 +121,7 @@ const SignUp = () => {
             />
           )}
         />
-        <Button type="submit" variant="primary">
+        <Button type="submit" variant="filled">
           Register
         </Button>
         <Typography size="small" align="center">

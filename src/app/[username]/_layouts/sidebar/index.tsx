@@ -7,7 +7,7 @@ import {
   BrandInstagramIcon,
   BrandLinkedinIcon,
   Flex,
-} from "@anhthi-projects/usy-ui";
+} from "@usy-ui/themes";
 
 import {
   Info,

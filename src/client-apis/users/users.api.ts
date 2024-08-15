@@ -18,10 +18,7 @@ export const usersApi = createApi({
         body: payload,
       }),
     }),
-    changeUsername: builder.mutation<
-      UserModel | AppException,
-      ChangeUsernameRequest
-    >({
+    changeUsername: builder.mutation<UserModel, ChangeUsernameRequest>({
       query: ({ userId, payload }) => ({
         url: `/users/${userId}/change-username`,
         method: "PUT",

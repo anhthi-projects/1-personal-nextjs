@@ -1,5 +1,5 @@
 "use client";
-import { Typography, usyColors } from "@anhthi-projects/usy-ui";
+import { Typography, usyColors } from "@usy-ui/themes";
 import styled from "styled-components";
 
 export const HiThereTypography = styled.h4`

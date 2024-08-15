@@ -4,7 +4,7 @@ import {
   usyColors,
   usyFontSizes,
   usySpacing,
-} from "@anhthi-projects/usy-ui";
+} from "@usy-ui/themes";
 import Link from "next/link";
 import styled from "styled-components";
 

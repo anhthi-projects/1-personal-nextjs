@@ -1,6 +1,6 @@
 import { FC, useEffect } from "react";
 
-import { Box, Flex, Typography, usySpacing } from "@anhthi-projects/usy-ui";
+import { Box, Flex, Typography, usySpacing } from "@usy-ui/themes";
 
 import { useDeleteSocialNetworkMutation } from "@/client-apis/social-networks/social-networks.api";
 import { SocialNetworkModel } from "@/models/social-network.model";

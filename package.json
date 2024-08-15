@@ -10,8 +10,8 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@anhthi-projects/usy-ui": "file:C:/Users/anhth/OneDrive/Desktop/projects/usy-ui/anhthi-projects-usy-ui-1.0.12.tgz",
     "@reduxjs/toolkit": "^2.2.5",
+    "@usy-ui/themes": "^1.0.0",
     "axios": "^1.7.2",
     "lodash": "^4.17.21",
     "next": "14.1.4",

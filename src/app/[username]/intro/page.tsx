@@ -4,7 +4,7 @@ import {
   GuyHackerIcon,
   ImageGallery,
   usySpacing,
-} from "@anhthi-projects/usy-ui";
+} from "@usy-ui/themes";
 
 import { getUserByUsername } from "@/client-apis/users/users.fetch";
 
@@ -40,7 +40,7 @@ const Intro = async ({ params }: any) => {
           gap="12px"
           marginProps={{ marginTop: "10px" }}
         >
-          <Button variant="primary">Download CV</Button>
+          <Button variant="filled">Download CV</Button>
           <Button variant="outline">View Github</Button>
         </Flex>
       </>
